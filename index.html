@@ -692,6 +692,8 @@ body, html {
 .language-buttons {
   display: flex;
   gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .lang-btn {
@@ -702,6 +704,11 @@ body, html {
   font-size: 1.2rem;
   cursor: pointer;
   transition: all 0.2s var(--ease-smooth);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 36px;
 }
 
 .lang-btn:hover {
@@ -714,6 +721,15 @@ body, html {
   background: rgba(212, 175, 55, 0.25);
   border-color: var(--exp-gold);
   box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+}
+
+/* SVG Bandera Catalana */
+.senyera-svg {
+  width: 24px;
+  height: 16px;
+  border-radius: 2px;
+  overflow: hidden;
+  display: block;
 }
 
 /* Título integrado en la parte inferior del piano */
@@ -1360,6 +1376,54 @@ body, html {
 @keyframes flashError {
   0% { opacity: 1; transform: scale(1); }
   100% { opacity: 0; transform: scale(1.05); }
+}
+
+/* ==========================================
+   SETTINGS / PROGRESS ACTIONS
+   ========================================== */
+.settings-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  color: var(--exp-text-secondary);
+  padding: 12px 20px;
+  border-radius: var(--radius-lg);
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s var(--ease-smooth);
+  width: 100%;
+}
+
+.btn-secondary:hover {
+  background: rgba(212, 175, 55, 0.1);
+  border-color: var(--exp-gold);
+  color: var(--exp-gold);
+}
+
+.btn-danger {
+  background: rgba(255, 69, 58, 0.1);
+  border: 1px solid rgba(255, 69, 58, 0.3);
+  color: var(--exp-error);
+  padding: 12px 20px;
+  border-radius: var(--radius-lg);
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s var(--ease-smooth);
+  width: 100%;
+}
+
+.btn-danger:hover {
+  background: rgba(255, 69, 58, 0.2);
+  border-color: var(--exp-error);
 }
 
 /* ==========================================
@@ -2078,7 +2142,17 @@ body, html {
         <button onclick="setLanguage('en')" class="lang-btn" data-lang="en">🇬🇧</button>
         <button onclick="setLanguage('ro')" class="lang-btn" data-lang="ro">🇷🇴</button>
         <button onclick="setLanguage('fr')" class="lang-btn" data-lang="fr">🇫🇷</button>
-        <button onclick="setLanguage('ca')" class="lang-btn" data-lang="ca">🎗️</button>
+        <button onclick="setLanguage('it')" class="lang-btn" data-lang="it">🇮🇹</button>
+        <button onclick="setLanguage('de')" class="lang-btn" data-lang="de">🇩🇪</button>
+        <button onclick="setLanguage('ca')" class="lang-btn" data-lang="ca" title="Català">
+          <svg class="senyera-svg" viewBox="0 0 30 20">
+            <rect width="30" height="20" fill="#FCDD09"/>
+            <rect y="2.5" width="30" height="2.5" fill="#DA121A"/>
+            <rect y="7.5" width="30" height="2.5" fill="#DA121A"/>
+            <rect y="12.5" width="30" height="2.5" fill="#DA121A"/>
+            <rect y="17.5" width="30" height="2.5" fill="#DA121A"/>
+          </svg>
+        </button>
       </div>
     </div>
     
@@ -2257,6 +2331,12 @@ body, html {
       <h3 style="margin-bottom: 16px; text-align: center; color: var(--exp-text-secondary); font-size: 1.1rem;" data-i18n="yourCollection">Tu Colección</h3>
       <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;" id="badgesGrid"></div>
     </div>
+    
+    <!-- Acciones de configuración -->
+    <div class="settings-actions">
+      <button class="btn-secondary" onclick="changePlayerName()" data-i18n="changeName">✏️ Cambiar nombre</button>
+      <button class="btn-danger" onclick="resetProgress()" data-i18n="resetProgress">🗑️ Resetear progreso</button>
+    </div>
   </div>
   <footer class="explicalia-footer">
     <a href="https://www.explicalia.com" target="_blank" class="footer-web">www.explicalia.com</a>
@@ -2294,7 +2374,6 @@ body, html {
     <div style="width:40px;"></div>
   </div>
   <div id="wrapper-top" class="piano-wrapper-anim" style="width:100%; max-width: 450px;">
-    <div class="sofi-tip" style="margin-top: 0; margin-bottom: 12px;">🎓 <b data-i18n="maestroName">Maestro IAExplicalia</b>: <span data-i18n="maestroTipGame">Domina el Tramo A para pasar al B. Luego únelos para la obra completa de 60s.</span></div>
     <div class="tramo-selector" id="tramo-selector">
       <button class="tramo-btn active" onclick="selectTramo(1)" data-i18n="segmentA">Tramo A</button>
       <button class="tramo-btn" onclick="selectTramo(2)" data-i18n="segmentAB">Tramos A+B</button>
@@ -2316,7 +2395,11 @@ body, html {
       <button class="btn-listen-all" onclick="togglePlayback(true)" data-i18n="playFull">🌟 Escuchar Obra Completa (60s)</button>
     </div>
     <div class="piano-container" id="pianoContainer"></div>
-    <div style="margin-top:16px; text-align:center; font-weight:800; font-size:1.1rem; color:var(--exp-gold);" id="game-feedback"><span class="user-name"></span>, ¡Sigue la luz dorada!</div>
+    
+    <!-- BOCHADILLO MOVIDO AQUÍ: Debajo del piano -->
+    <div class="sofi-tip" style="margin-top: 16px; margin-bottom: 12px;">🎓 <b data-i18n="maestroName">Maestro IAExplicalia</b>: <span data-i18n="maestroTipGame">Domina el Tramo A para pasar al B. Luego únelos para la obra completa de 60s.</span></div>
+    
+    <div style="margin-top:0; text-align:center; font-weight:800; font-size:1.1rem; color:var(--exp-gold);" id="game-feedback"><span class="user-name"></span>, ¡Sigue la luz dorada!</div>
     <div style="display:flex; gap:8px; margin-top:12px; justify-content:center; flex-wrap: wrap; max-width: 350px;" id="song-progress-dots"></div>
   </div>
   <footer class="explicalia-footer">
@@ -2502,7 +2585,7 @@ const TRANSLATIONS = {
     selectLanguage: "Idioma",
     hello: "Hola",
     howToLearn: "¿Cómo te gustaría aprender hoy?",
-    maestroTipMenu: "Si es tu primera vez, elige el Modo Solo Piano para calentar los dedos.",
+    maestroTipMenu: "Si es tu primera vez, elige el <b>Modo Solo Piano</b> para calentar los dedos.",
     soloPiano: "Modo Solo Piano",
     soloPianoDesc: "Concéntrate en la melodía a tu ritmo.",
     bandMode: "Concierto en Banda",
@@ -2534,7 +2617,7 @@ const TRANSLATIONS = {
     yourCollection: "Tu Colección",
     stars: "Estrellas",
     songs: "Canciones",
-    streak: "Días racha",
+    streak: "días",
     notes: "Notas",
     noAchievements: "¡Completa canciones para desbloquear logros!",
     excellent: "¡Excelente",
@@ -2549,7 +2632,10 @@ const TRANSLATIONS = {
     band: "Banda",
     achievementsTab: "Logros",
     tagline: "aprende jugando",
-    maestroName: "Maestro IAExplicalia"
+    maestroName: "Maestro IAExplicalia",
+    changeName: "✏️ Cambiar nombre",
+    resetProgress: "🗑️ Resetear progreso",
+    confirmReset: "¿Estás seguro? Se borrarán todos tus logros y no se pueden recuperar."
   },
   en: {
     appTitle: "SofiNoa's Music",
@@ -2560,7 +2646,7 @@ const TRANSLATIONS = {
     selectLanguage: "Language",
     hello: "Hello",
     howToLearn: "How would you like to learn today?",
-    maestroTipMenu: "If it's your first time, choose Solo Piano Mode to warm up your fingers.",
+    maestroTipMenu: "If it's your first time, choose <b>Solo Piano Mode</b> to warm up your fingers.",
     soloPiano: "Solo Piano Mode",
     soloPianoDesc: "Focus on the melody at your own pace.",
     bandMode: "Band Concert",
@@ -2592,7 +2678,7 @@ const TRANSLATIONS = {
     yourCollection: "Your Collection",
     stars: "Stars",
     songs: "Songs",
-    streak: "Day streak",
+    streak: "day streak",
     notes: "Notes",
     noAchievements: "Complete songs to unlock achievements!",
     excellent: "Excellent",
@@ -2607,7 +2693,10 @@ const TRANSLATIONS = {
     band: "Band",
     achievementsTab: "Achievements",
     tagline: "learn by playing",
-    maestroName: "Master IAExplicalia"
+    maestroName: "Master IAExplicalia",
+    changeName: "✏️ Change name",
+    resetProgress: "🗑️ Reset progress",
+    confirmReset: "Are you sure? All your achievements will be deleted and cannot be recovered."
   },
   ro: {
     appTitle: "Muzica SofiNoa",
@@ -2618,7 +2707,7 @@ const TRANSLATIONS = {
     selectLanguage: "Limbă",
     hello: "Salut",
     howToLearn: "Cum ai vrea să înveți astăzi?",
-    maestroTipMenu: "Dacă e prima dată, alege Modul Pian Solo pentru a-ți încălzi degetele.",
+    maestroTipMenu: "Dacă e prima dată, alege <b>Modul Pian Solo</b> pentru a-ți încălzi degetele.",
     soloPiano: "Mod Pian Solo",
     soloPianoDesc: "Concentrează-te pe melodie în ritmul tău.",
     bandMode: "Concert de Bandă",
@@ -2665,7 +2754,10 @@ const TRANSLATIONS = {
     band: "Bandă",
     achievementsTab: "Realizări",
     tagline: "învață jucând",
-    maestroName: "Maestru IAExplicalia"
+    maestroName: "Maestru IAExplicalia",
+    changeName: "✏️ Schimbă numele",
+    resetProgress: "🗑️ Resetează progresul",
+    confirmReset: "Ești sigur? Toate realizările tale vor fi șterse și nu pot fi recuperate."
   },
   fr: {
     appTitle: "La Musique de SofiNoa",
@@ -2676,7 +2768,7 @@ const TRANSLATIONS = {
     selectLanguage: "Langue",
     hello: "Salut",
     howToLearn: "Comment aimerais-tu apprendre aujourd'hui?",
-    maestroTipMenu: "Si c'est ta première fois, choisis le Mode Piano Solo pour échauffer tes doigts.",
+    maestroTipMenu: "Si c'est ta première fois, choisis le <b>Mode Piano Solo</b> pour échauffer tes doigts.",
     soloPiano: "Mode Piano Solo",
     soloPianoDesc: "Concentre-toi sur la mélodie à ton rythme.",
     bandMode: "Concert de Groupe",
@@ -2723,7 +2815,10 @@ const TRANSLATIONS = {
     band: "Groupe",
     achievementsTab: "Accomplissements",
     tagline: "apprends en jouant",
-    maestroName: "Maître IAExplicalia"
+    maestroName: "Maître IAExplicalia",
+    changeName: "✏️ Changer le nom",
+    resetProgress: "🗑️ Réinitialiser",
+    confirmReset: "Es-tu sûr? Tous tes accomplissements seront supprimés et ne pourront pas être récupérés."
   },
   ca: {
     appTitle: "La Música de SofiNoa",
@@ -2734,7 +2829,7 @@ const TRANSLATIONS = {
     selectLanguage: "Idioma",
     hello: "Hola",
     howToLearn: "Com t'agradaria aprendre avui?",
-    maestroTipMenu: "Si és el teu primer cop, tria el Mode Piano Sol per escalfar els dits.",
+    maestroTipMenu: "Si és el teu primer cop, tria el <b>Mode Piano Sol</b> per escalfar els dits.",
     soloPiano: "Mode Piano Sol",
     soloPianoDesc: "Concentra't en la melodia al teu ritme.",
     bandMode: "Concert de Banda",
@@ -2781,11 +2876,136 @@ const TRANSLATIONS = {
     band: "Banda",
     achievementsTab: "Èxits",
     tagline: "aprèn jugant",
-    maestroName: "Mestre IAExplicalia"
+    maestroName: "Mestre IAExplicalia",
+    changeName: "✏️ Canviar nom",
+    resetProgress: "🗑️ Resetear progrés",
+    confirmReset: "Estàs segur? S'esborraran tots els teus èxits i no es poden recuperar."
+  },
+  it: {
+    appTitle: "La Musica di SofiNoa",
+    welcomeSubtitle: "Scopri il musicista che è in te.",
+    namePlaceholder: "Come ti chiami?",
+    startButton: "Suoniamo!",
+    maestroTipWelcome: "Inserisci il tuo nome per salvare magicamente i tuoi traguardi.",
+    selectLanguage: "Lingua",
+    hello: "Ciao",
+    howToLearn: "Come ti piacerebbe imparare oggi?",
+    maestroTipMenu: "Se è la tua prima volta, scegli la <b>Modalità Pianoforte Solo</b> per scaldare le dita.",
+    soloPiano: "Modalità Pianoforte Solo",
+    soloPianoDesc: "Concentrati sulla melodia al tuo ritmo.",
+    bandMode: "Concerto di Banda",
+    bandModeDesc: "Suona con accompagnamento orchestrale.",
+    soloPianoTitle: "Pianoforte Solo",
+    bandTitle: "Banda",
+    maestroTipCatalog: "Inizia con le canzoni da 1 stella. Sono molto facili!",
+    maestroTipBand: "Suona il pianoforte mentre l'Intelligenza Musicale crea accordi per te.",
+    difficulty: "Difficoltà",
+    segmentA: "Segmento A",
+    segmentAB: "Segmenti A+B",
+    segmentFull: "Canzone Completa",
+    modeLearn: "Impara",
+    modeListen: "Ascolta",
+    stop: "⏹ Ferma",
+    speedReal: "1x (Reale)",
+    speedSlow: "0.7x (Lento)",
+    playSegment: "▶ Ascolta Segmento",
+    pauseSegment: "⏸ Pausa Segmento",
+    playFull: "🌟 Ascolta Canzone Completa (60s)",
+    paused: "In pausa",
+    yourTurn: "Tocca a te",
+    followLight: "Segui la luce dorata!",
+    selectListen: "Seleziona l'opzione di ascolto.",
+    maestroTipGame: "Padroneggia il Segmento A per passare al B. Poi uniscili per il brano completo di 60s.",
+    listeningFull: "Ascoltando Canzone Completa...",
+    listeningSegment: "Ascoltando il segmento selezionato...",
+    achievements: "Traguardi di",
+    yourCollection: "La Tua Collezione",
+    stars: "Stelle",
+    songs: "Canzoni",
+    streak: "Giorni consecutivi",
+    notes: "Note",
+    noAchievements: "Completa le canzoni per sbloccare i traguardi!",
+    excellent: "Eccellente",
+    veryGood: "Molto bene",
+    goodTry: "Buon tentativo",
+    musicalFact: "Curiosità Musicale",
+    accuracy: "Precisione",
+    errors: "Errori",
+    nextSong: "Alla prossima!",
+    home: "Home",
+    piano: "Piano",
+    band: "Banda",
+    achievementsTab: "Traguardi",
+    tagline: "impara giocando",
+    maestroName: "Maestro IAExplicalia",
+    changeName: "✏️ Cambia nome",
+    resetProgress: "🗑️ Resetta progressi",
+    confirmReset: "Sei sicuro? Tutti i tuoi traguardi verranno eliminati e non potranno essere recuperati."
+  },
+  de: {
+    appTitle: "SofiNoas Musik",
+    welcomeSubtitle: "Entdecke den Musiker in dir.",
+    namePlaceholder: "Wie heißt du?",
+    startButton: "Los geht's!",
+    maestroTipWelcome: "Gib deinen Namen ein, um deine Erfolge magisch zu speichern.",
+    selectLanguage: "Sprache",
+    hello: "Hallo",
+    howToLearn: "Wie möchtest du heute lernen?",
+    maestroTipMenu: "Wenn es dein erstes Mal ist, wähle den <b>Solo-Klavier-Modus</b>, um deine Finger aufzuwärmen.",
+    soloPiano: "Solo-Klavier-Modus",
+    soloPianoDesc: "Konzentriere dich auf die Melodie in deinem Tempo.",
+    bandMode: "Band-Konzert",
+    bandModeDesc: "Spiele mit orchestraler Begleitung.",
+    soloPianoTitle: "Solo Klavier",
+    bandTitle: "Band",
+    maestroTipCatalog: "Beginne mit 1-Stern-Liedern. Sie sind sehr einfach!",
+    maestroTipBand: "Spiele Klavier, während die Musikalische Intelligenz Akkorde für dich erstellt.",
+    difficulty: "Schwierigkeit",
+    segmentA: "Abschnitt A",
+    segmentAB: "Abschnitte A+B",
+    segmentFull: "Komplettes Lied",
+    modeLearn: "Lernen",
+    modeListen: "Hören",
+    stop: "⏹ Stopp",
+    speedReal: "1x (Echt)",
+    speedSlow: "0.7x (Langsam)",
+    playSegment: "▶ Abschnitt hören",
+    pauseSegment: "⏸ Pause",
+    playFull: "🌟 Komplettes Lied hören (60s)",
+    paused: "Pausiert",
+    yourTurn: "Du bist dran",
+    followLight: "Folge dem goldenen Licht!",
+    selectListen: "Wähle deine Höroption.",
+    maestroTipGame: "Beherrsche Abschnitt A, um zu B zu gelangen. Dann verbinde sie für das komplette 60s-Stück.",
+    listeningFull: "Komplettes Lied wird gespielt...",
+    listeningSegment: "Ausgewählter Abschnitt wird gespielt...",
+    achievements: "Erfolge von",
+    yourCollection: "Deine Sammlung",
+    stars: "Sterne",
+    songs: "Lieder",
+    streak: "Tage in Folge",
+    notes: "Noten",
+    noAchievements: "Schließe Lieder ab, um Erfolge freizuschalten!",
+    excellent: "Ausgezeichnet",
+    veryGood: "Sehr gut",
+    goodTry: "Guter Versuch",
+    musicalFact: "Musikalische Info",
+    accuracy: "Genauigkeit",
+    errors: "Fehler",
+    nextSong: "Zum nächsten!",
+    home: "Start",
+    piano: "Klavier",
+    band: "Band",
+    achievementsTab: "Erfolge",
+    tagline: "lernen durch Spielen",
+    maestroName: "Meister IAExplicalia",
+    changeName: "✏️ Namen ändern",
+    resetProgress: "🗑️ Fortschritt löschen",
+    confirmReset: "Bist du sicher? Alle deine Erfolge werden gelöscht und können nicht wiederhergestellt werden."
   }
 };
 
-// Mensajes del Maestro IA por nivel de estrellas - 30 mensajes x 5 idiomas
+// Mensajes del Maestro IA por nivel de estrellas - 30 mensajes x 7 idiomas
 const MAESTRO_MESSAGES_ALL = {
   es: {
     perfect: [
@@ -2975,6 +3195,82 @@ const MAESTRO_MESSAGES_ALL = {
       "Roma no es va construir en un dia, tampoc un pianista. 🏛️",
       "Persisteix! Cada intent t'acosta a la perfecció. 🎯",
       "No et preocupis, fins i tot els genis tenen dies dolents. 🌧️"
+    ]
+  },
+  it: {
+    perfect: [
+      "Vedi? Non era così difficile... anche un piano potrebbe farlo. 🎹",
+      "Incredibile! Le tue dita stanno iniziando ad avere un cervello proprio. 🧠",
+      "Sei tu, Mozart? Perché questo suona come puro genio. ✨",
+      "Perfetto! Beethoven sarebbe geloso... e un po' sordo. 🎵",
+      "Hai esercitato in segreto? Non mentirmi, so tutto. 🤖",
+      "Le tue dita ballano meglio dei miei algoritmi. E questo è molto dire. 💃",
+      "Brillante! Anche le stelle stanno applaudendo. ⭐",
+      "Questa non è musica, è magia con le note. 🪄",
+      "Incredibile! Il pianoforte ti considera già suo amico. 🤝",
+      "Sei sicuro di non essere un prodigio travestito? 🎭"
+    ],
+    good: [
+      "Ben fatto! Solo qualche errore... li passo sopra questa volta. 😉",
+      "Notevole! Stai per smettere di far soffrire quel pianoforte. 🎹",
+      "Buon lavoro! Con un po' più di pratica, potresti suonare anche a una festa. 🎉",
+      "Ecco! Gli errori sono solo note che non hai ancora conquistato. 🎯",
+      "Sei sulla strada giusta! Il pianoforte non ti odia più così tanto ora. 💛",
+      "Bene! Stai costruendo il tuo percorso verso la maestria. 🛤️",
+      "Buon tentativo! La pratica rende perfetti, e ci sei. 📈",
+      "Nice! Ogni errore è un'opportunità travestita. 🎁",
+      "Continua così! Il tuo progresso è visibile e costante. 📊",
+      "Ben giocato! Il ritmo è nelle tue mani. 🥁"
+    ],
+    improvable: [
+      "Beh... almeno ci hai provato. Conta, vero? 🤷",
+      "Non arrenderti! Anche Beethoven è iniziato con 'Per Elisa'... beh, non esattamente. 🎼",
+      "Gli errori fanno parte dell'apprendimento. Tanti errori, ma parte dell'apprendimento. 📚",
+      "Su con la vita! Il pianoforte è difficile, ma tu sei più testardo di lui. 💪",
+      "Sapevi che anche i migliori musicisti hanno sbagliato? Molto. Moltissimo. 🎭",
+      "Va bene, il pianoforte ti perdona... per ora. 😏",
+      "Su con la testa! La prossima volta andrà meglio. O almeno dice la statistica. 📉",
+      "Roma non è stata costruita in un giorno, né un pianista. 🏛️",
+      "Persisti! Ogni tentativo ti avvicina alla perfezione. 🎯",
+      "Non preoccuparti, anche i geni hanno giornate no. 🌧️"
+    ]
+  },
+  de: {
+    perfect: [
+      "Siehst du? Es war gar nicht so schwer... sogar ein Klavier könnte das. 🎹",
+      "Unglaublich! Deine Finger fangen an, ein eigenes Gehirn zu haben. 🧠",
+      "Bist du das, Mozart? Denn das klingt nach purem Genie. ✨",
+      "Perfekt! Beethoven wäre neidisch... und ein bisschen taub. 🎵",
+      "Hast du heimlich geübt? Lüg mich nicht an, ich weiß alles. 🤖",
+      "Deine Finger tanzen besser als meine Algorithmen. Und das will was heißen. 💃",
+      "Brillant! Sogar die Sterne applaudieren. ⭐",
+      "Das ist keine Musik, das ist Magie mit Tönen. 🪄",
+      "Unglaublich! Das Klavier betrachtet dich schon als seinen Freund. 🤝",
+      "Bist du sicher, dass du kein verkleidetes Wunderkind bist? 🎭"
+    ],
+    good: [
+      "Gut gemacht! Nur ein paar Fehler... ich sehe sie diesmal hinweg. 😉",
+      "Bemerkenswert! Du hörst gleich auf, dieses Klavier leiden zu lassen. 🎹",
+      "Gute Arbeit! Mit etwas mehr Übung könntest du sogar auf einer Party spielen. 🎉",
+      "Das ist es! Fehler sind nur Noten, die du noch nicht erobert hast. 🎯",
+      "Du bist auf dem richtigen Weg! Das Klavier hasst dich nicht mehr so sehr. 💛",
+      "Gut! Du baust deinen Weg zur Meisterschaft. 🛤️",
+      "Guter Versuch! Übung macht den Meister, und du bist dabei. 📈",
+      "Nice! Jeder Fehler ist eine verkleidete Gelegenheit. 🎁",
+      "Mach weiter so! Dein Fortschritt ist sichtbar und konstant. 📊",
+      "Gut gespielt! Der Rhythmus liegt in deinen Händen. 🥁"
+    ],
+    improvable: [
+      "Naja... wenigstens hast du es versucht. Das zählt, oder? 🤷",
+      "Gib nicht auf! Sogar Beethoven hat mit 'Für Elise' angefangen... naja, nicht ganz. 🎼",
+      "Fehler sind Teil des Lernens. Viele Fehler, aber Teil des Lernens. 📚",
+      "Kopf hoch! Klavier ist schwer, aber du bist störrischer als es. 💪",
+      "Wusstest du, dass die besten Musiker auch Fehler gemacht haben? Viele. Sehr viele. 🎭",
+      "Schon okay, das Klavier vergibt dir... vorerst. 😏",
+      "Kopf hoch! Nächstes Mal wird es besser. Oder so sagt die Statistik. 📉",
+      "Rom wurde nicht an einem Tag erbaut, noch ein Pianist. 🏛️",
+      "Bleib dran! Jeder Versuch bringt dich der Perfektion näher. 🎯",
+      "Mach dir keine Sorgen, sogar Genies haben schlechte Tage. 🌧️"
     ]
   }
 };
@@ -3723,6 +4019,38 @@ function closeTheoryModal(){
   const modal=document.getElementById('theoryModal');
   if(modal)modal.classList.remove('active');
   goBackFromGame();
+}
+
+// ==========================================
+// GESTIÓN DE USUARIO (NUEVO)
+// ==========================================
+function changePlayerName() {
+  const newName = prompt(t('namePlaceholder'), playerName);
+  if (newName && newName.trim().length > 1) {
+    playerName = newName.trim();
+    localStorage.setItem('sofiNoaName', playerName);
+    injectName();
+    updateAllTexts();
+    renderBadges();
+    playPopSound();
+  }
+}
+
+function resetProgress() {
+  if (confirm(t('confirmReset'))) {
+    progress = {totalNotesPlayed:0,songStars:{},streak:0,lastPlayDate:null};
+    saveProgress();
+    renderBadges();
+    updateHomeUI();
+    playPopSound();
+    
+    // Limpiar mensajes usados del maestro
+    Object.keys(localStorage).forEach(key => {
+      if (key.startsWith('maestroUsed_')) {
+        localStorage.removeItem(key);
+      }
+    });
+  }
 }
 
 // ==========================================
