@@ -1,0 +1,3817 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>La música de SofiNoa · Explicalia System</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ==========================================
+   EXPLICALIA DESIGN SYSTEM
+   ========================================== */
+:root {
+  /* Colores principales */
+  --exp-gold: #D4AF37;
+  --exp-gold-light: #F5D77E;
+  --exp-gold-dark: #AA8C2C;
+  --exp-gold-dimmer: #8B6914;
+  
+  /* Colores de fondo */
+  --exp-bg-primary: #000000;
+  --exp-bg-surface: rgba(28, 28, 30, 0.75);
+  --exp-bg-glass: rgba(20, 20, 22, 0.85);
+  
+  /* Colores de texto */
+  --exp-text-primary: #FFFFFF;
+  --exp-text-secondary: #EBEBF5;
+  --exp-text-muted: rgba(235, 235, 245, 0.6);
+  
+  /* Estados */
+  --exp-success: #32D74B;
+  --exp-error: #FF453A;
+  
+  /* Efectos */
+  --exp-glass-border: rgba(212, 175, 55, 0.3);
+  --exp-glass-border-strong: rgba(212, 175, 55, 0.5);
+  --exp-shadow-gold: 0 8px 32px rgba(212, 175, 55, 0.2);
+  --exp-shadow-gold-strong: 0 12px 40px rgba(212, 175, 55, 0.35);
+  
+  /* Tipografía */
+  --font-display: 'Outfit', sans-serif;
+  --font-body: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  /* Animaciones */
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Radios */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 32px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  -webkit-tap-highlight-color: transparent;
+}
+
+body, html {
+  height: 100%;
+  width: 100%;
+  background: transparent;
+  color: var(--exp-text-primary);
+  overflow: hidden;
+}
+
+/* ==========================================
+   FONDO ESPACIAL GLOBAL UNIFICADO
+   ========================================== */
+.space-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  background: 
+    /* Nebulosas doradas múltiples */
+    radial-gradient(ellipse at 20% 80%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(212, 175, 55, 0.1) 0%, transparent 45%),
+    radial-gradient(ellipse at 40% 40%, rgba(100, 80, 200, 0.08) 0%, transparent 55%),
+    radial-gradient(ellipse at 60% 70%, rgba(212, 175, 55, 0.08) 0%, transparent 40%),
+    radial-gradient(ellipse at 15% 30%, rgba(212, 175, 55, 0.06) 0%, transparent 35%),
+    radial-gradient(ellipse at 85% 85%, rgba(212, 175, 55, 0.05) 0%, transparent 45%),
+    /* Fondo base */
+    #000;
+  background-size: 250% 250%;
+  animation: spacePulse 30s ease-in-out infinite;
+}
+
+/* Capa de estrellas principales */
+.space-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.95), transparent),
+    radial-gradient(2px 2px at 80px 150px, rgba(212, 175, 55, 0.9), transparent),
+    radial-gradient(1px 1px at 150px 70px, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(3px 3px at 250px 200px, rgba(212, 175, 55, 0.6), transparent),
+    radial-gradient(1px 1px at 320px 40px, rgba(255, 255, 255, 1), transparent),
+    radial-gradient(2px 2px at 400px 250px, rgba(212, 175, 55, 0.75), transparent),
+    radial-gradient(2px 2px at 500px 100px, rgba(255, 255, 255, 0.85), transparent),
+    radial-gradient(1px 1px at 600px 300px, rgba(212, 175, 55, 0.65), transparent),
+    radial-gradient(1.5px 1.5px at 700px 180px, rgba(255, 255, 255, 0.75), transparent),
+    radial-gradient(2px 2px at 850px 350px, rgba(212, 175, 55, 0.55), transparent),
+    radial-gradient(1px 1px at 100px 400px, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(2px 2px at 450px 50px, rgba(212, 175, 55, 0.5), transparent),
+    radial-gradient(1.5px 1.5px at 750px 450px, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(2px 2px at 950px 150px, rgba(212, 175, 55, 0.6), transparent),
+    radial-gradient(1px 1px at 50px 550px, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(2.5px 2.5px at 350px 480px, rgba(212, 175, 55, 0.45), transparent);
+  background-size: 1000px 700px;
+  animation: moveStars 100s linear infinite;
+}
+
+/* Capa de estrellas secundarias (movimiento contrario) */
+.space-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(3px 3px at 100px 200px, rgba(212, 175, 55, 0.5), transparent),
+    radial-gradient(2px 2px at 300px 100px, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(1px 1px at 500px 350px, rgba(212, 175, 55, 0.4), transparent),
+    radial-gradient(2.5px 2.5px at 750px 280px, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(2px 2px at 200px 500px, rgba(212, 175, 55, 0.4), transparent),
+    radial-gradient(1px 1px at 600px 50px, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(1.5px 1.5px at 900px 400px, rgba(212, 175, 55, 0.35), transparent),
+    radial-gradient(2px 2px at 50px 300px, rgba(255, 255, 255, 0.45), transparent);
+  background-size: 1200px 900px;
+  animation: moveStarsSlow 150s linear infinite;
+  opacity: 0.6;
+}
+
+@keyframes moveStars {
+  0% { transform: translateY(0) translateX(0); }
+  100% { transform: translateY(-50%) translateX(-25%); }
+}
+
+@keyframes moveStarsSlow {
+  0% { transform: translateY(0) translateX(0); }
+  100% { transform: translateY(-30%) translateX(15%); }
+}
+
+@keyframes spacePulse {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.center-glow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(circle at 50% 40%, rgba(212, 175, 55, 0.1) 0%, transparent 55%);
+  animation: glowPulse 10s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+/* ==========================================
+   SPLASH SCREEN MEJORADO
+   ========================================== */
+#splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: 
+    radial-gradient(ellipse at 30% 20%, rgba(212, 175, 55, 0.08) 0%, transparent 40%),
+    radial-gradient(ellipse at 70% 80%, rgba(212, 175, 55, 0.06) 0%, transparent 40%),
+    #0a0a0a;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  transition: opacity 0.8s var(--ease-smooth), transform 0.8s var(--ease-smooth), visibility 0.8s;
+  opacity: 1;
+  pointer-events: auto;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+#splash-screen.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(1.02);
+  visibility: hidden;
+}
+
+#splash-screen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 15% 25%, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1.5px 1.5px at 85% 15%, rgba(212, 175, 55, 0.7), transparent),
+    radial-gradient(1px 1px at 75% 75%, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(2px 2px at 25% 85%, rgba(212, 175, 55, 0.5), transparent),
+    radial-gradient(1px 1px at 45% 10%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1.5px 1.5px at 60% 35%, rgba(212, 175, 55, 0.6), transparent),
+    radial-gradient(1px 1px at 10% 60%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(2px 2px at 90% 70%, rgba(212, 175, 55, 0.4), transparent),
+    radial-gradient(1px 1px at 35% 45%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1.5px 1.5px at 55% 85%, rgba(212, 175, 55, 0.5), transparent);
+  background-size: 600px 500px;
+  animation: splashStars 60s linear infinite;
+  opacity: 0.7;
+}
+
+#splash-screen::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(2px 2px at 20% 80%, rgba(212, 175, 55, 0.3), transparent),
+    radial-gradient(1.5px 1.5px at 70% 20%, rgba(255, 255, 255, 0.4), transparent),
+    radial-gradient(1px 1px at 40% 60%, rgba(212, 175, 55, 0.25), transparent),
+    radial-gradient(2px 2px at 80% 90%, rgba(255, 255, 255, 0.35), transparent),
+    radial-gradient(1px 1px at 5% 40%, rgba(212, 175, 55, 0.3), transparent),
+    radial-gradient(1.5px 1.5px at 95% 50%, rgba(255, 255, 255, 0.3), transparent);
+  background-size: 800px 600px;
+  animation: splashStarsSlow 90s linear infinite;
+  opacity: 0.5;
+}
+
+@keyframes splashStarsSlow {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(-20%) rotate(-3deg); }
+}
+
+@keyframes splashStars {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(-30%) rotate(5deg); }
+}
+
+.splash-content {
+  text-align: center;
+  max-width: 600px;
+  padding: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.splash-content .exp-branding-logo {
+  max-width: 400px;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.3));
+}
+
+/* Tagline debajo del logo en splash */
+.splash-tagline-container {
+  margin-top: 15px;
+  opacity: 0;
+  animation: fadeInUp 1s var(--ease-smooth) 2s forwards;
+}
+
+.splash-tagline {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--exp-text-secondary);
+  letter-spacing: 2px;
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+.splash-web {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--exp-gold);
+  text-decoration: none;
+  letter-spacing: 1.5px;
+  opacity: 0;
+  animation: fadeInUp 1s var(--ease-smooth) 1.5s forwards;
+  text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+  display: inline-block;
+  margin-top: 25px;
+  position: relative;
+}
+
+.splash-web::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--exp-gold), transparent);
+  animation: lineExpand 1s var(--ease-smooth) 2.5s forwards;
+}
+
+@keyframes lineExpand {
+  to { width: 120%; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================
+   HEADER CON EFECTO CRISTAL
+   ========================================== */
+.game-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 14px 20px;
+  background: linear-gradient(180deg, 
+    rgba(28, 28, 30, 0.95) 0%, 
+    rgba(20, 20, 22, 0.9) 100%);
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: all 0.3s var(--ease-smooth);
+  box-shadow: 
+    0 1px 0 rgba(255, 255, 255, 0.05) inset,
+    0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.game-header.scrolled {
+  padding: 10px 20px;
+  background: linear-gradient(180deg, 
+    rgba(20, 20, 22, 0.98) 0%, 
+    rgba(15, 15, 17, 0.95) 100%);
+  box-shadow: 
+    0 1px 0 rgba(255, 255, 255, 0.03) inset,
+    0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+.header-branding-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.game-header .exp-branding-logo {
+  max-width: 170px;
+  transition: max-width 0.3s var(--ease-smooth);
+}
+
+.game-header.scrolled .exp-branding-logo {
+  max-width: 140px;
+}
+
+/* Tagline en header */
+.brand-tagline {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--exp-text-secondary);
+  letter-spacing: 0.8px;
+  opacity: 0;
+  white-space: nowrap;
+  animation: taglineReveal 0.8s var(--ease-spring) 2s forwards;
+  margin-left: 6px;
+  padding-left: 10px;
+  border-left: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+@keyframes taglineReveal {
+  0% { opacity: 0; transform: translateX(-15px); }
+  100% { opacity: 0.85; transform: translateX(0); }
+}
+
+/* ==========================================
+   LÍNEA DIVISORIA TIPO APPLE (WELCOME SCREEN)
+   ========================================== */
+.welcome-divider {
+  width: 100%;
+  max-width: 400px;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(212, 175, 55, 0.4) 20%, 
+    rgba(212, 175, 55, 0.6) 50%, 
+    rgba(212, 175, 55, 0.4) 80%, 
+    transparent 100%);
+  margin: 20px auto;
+  position: relative;
+}
+
+.welcome-divider::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.3), 
+    transparent);
+}
+
+/* ==========================================
+   FOOTER MEJORADO - LOGO ANIMADO DEBAJO DE WEB
+   ========================================== */
+.explicalia-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  color: var(--exp-gold);
+  opacity: 0.9;
+  padding: 24px 16px 20px;
+  text-align: center;
+  width: 100%;
+  letter-spacing: 0.5px;
+  margin-top: auto;
+  background: linear-gradient(180deg, transparent, rgba(212, 175, 55, 0.03));
+  border-top: 1px solid rgba(212, 175, 55, 0.1);
+  position: relative;
+}
+
+.explicalia-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+}
+
+.footer-web {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--exp-gold);
+  text-decoration: none;
+  letter-spacing: 1.5px;
+  position: relative;
+  transition: all 0.3s var(--ease-smooth);
+  display: inline-block;
+  margin-bottom: 2px;
+}
+
+.footer-web::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--exp-gold), transparent);
+  transition: width 0.4s var(--ease-smooth);
+}
+
+.footer-web:hover {
+  color: #fff;
+  text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+}
+
+.footer-web:hover::after {
+  width: 120%;
+}
+
+/* Logo animado en footer - sincronizado con header */
+.footer-logo-animado {
+  width: 55px;
+  height: auto;
+  display: block;
+  cursor: pointer;
+  filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.2));
+  transition: transform 0.3s var(--ease-spring), filter 0.3s ease;
+}
+
+.footer-logo-animado .icon-path {
+  fill: transparent;
+  stroke: var(--exp-gold);
+  stroke-width: 1.5;
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  animation: expDrawLine 1.2s var(--ease-smooth) forwards,
+             expFillSolid 0.6s ease-in 1s forwards;
+}
+
+.footer-logo-animado .text-group-wrapper {
+  clip-path: inset(0 100% 0 0);
+  animation: expSweepReveal 1.2s var(--ease-smooth) 0.8s forwards;
+}
+
+.footer-logo-animado .exp-system {
+  opacity: 0;
+  animation: expFadeIn 0.8s ease 1.5s forwards;
+}
+
+.footer-logo-animado:hover {
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.5));
+}
+
+/* ==========================================
+   BRANDING LOGO ANIMADO
+   ========================================== */
+.exp-branding-logo {
+  width: 100%;
+  display: block;
+  cursor: pointer;
+  transition: transform 0.3s var(--ease-smooth);
+}
+
+.exp-branding-logo:hover {
+  transform: scale(1.03);
+}
+
+.exp-text-base {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 44px;
+  letter-spacing: -0.5px;
+}
+
+.exp-word { fill: #FFFFFF; }
+.exp-ia { fill: var(--exp-gold); }
+.exp-system {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 28px;
+  letter-spacing: 1px;
+  fill: var(--exp-gold);
+}
+
+.exp-animado .icon-path {
+  fill: transparent;
+  stroke: var(--exp-gold);
+  stroke-width: 1.5;
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  animation: expDrawLine 1.2s var(--ease-smooth) forwards,
+             expFillSolid 0.6s ease-in 1s forwards;
+}
+
+.exp-animado .text-group-wrapper {
+  clip-path: inset(0 100% 0 0);
+  animation: expSweepReveal 1.2s var(--ease-smooth) 0.8s forwards;
+}
+
+.exp-animado .exp-system {
+  opacity: 0;
+  animation: expFadeIn 0.8s ease 1.5s forwards;
+}
+
+@keyframes expDrawLine { to { stroke-dashoffset: 0; } }
+@keyframes expFillSolid { to { fill: var(--exp-gold); stroke-width: 0; } }
+@keyframes expSweepReveal { to { clip-path: inset(0 0 0 0); } }
+@keyframes expFadeIn { to { opacity: 1; } }
+
+/* ==========================================
+   SCREENS
+   ========================================== */
+.screen {
+  position: absolute;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 0 90px 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  z-index: 5;
+  background: transparent;
+}
+
+.screen.active {
+  display: flex;
+  animation: screenPop 0.4s var(--ease-spring) forwards;
+}
+
+@keyframes screenPop {
+  0% { opacity: 0; transform: scale(0.97); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* ==========================================
+   PANTALLA DE ACCESO MEJORADA
+   ========================================== */
+.welcome-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  padding: 20px 20px 20px 20px;
+}
+
+/* Header de branding en pantalla de bienvenida */
+.welcome-branding {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 12px;
+  padding: 16px 0;
+}
+
+.welcome-branding .exp-branding-logo {
+  max-width: 280px;
+  margin-bottom: 10px;
+}
+
+/* PIANO 3D MEJORADO */
+.piano-3d-wrapper {
+  width: 100%;
+  max-width: 320px;
+  margin-top: 8px;
+  margin-bottom: 5px;
+  position: relative;
+  z-index: 2;
+  animation: levitate 6s ease-in-out infinite;
+  filter: drop-shadow(0 30px 50px rgba(0,0,0,0.8));
+}
+
+@keyframes levitate {
+  0%, 100% { transform: translateY(0px) rotateX(0deg); }
+  50% { transform: translateY(-12px) rotateX(2deg); }
+}
+
+.piano-shadow {
+  width: 160px;
+  height: 12px;
+  background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.4) 0%, rgba(0,0,0,0) 70%);
+  border-radius: 50%;
+  margin: 0 auto 20px auto;
+  animation: shadowPulse 6s ease-in-out infinite;
+  position: relative;
+  z-index: 1;
+  filter: blur(4px);
+}
+
+@keyframes shadowPulse {
+  0%, 100% { transform: scale(1) translateY(0); opacity: 0.8; }
+  50% { transform: scale(0.85) translateY(8px); opacity: 0.35; }
+}
+
+/* SELECTOR DE IDIOMA */
+.language-selector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0 15px;
+  padding: 12px 20px;
+  background: rgba(212, 175, 55, 0.06);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(10px);
+}
+
+.language-selector span {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  color: var(--exp-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.language-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.lang-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s var(--ease-smooth);
+}
+
+.lang-btn:hover {
+  background: rgba(212, 175, 55, 0.15);
+  border-color: var(--exp-gold);
+  transform: scale(1.1);
+}
+
+.lang-btn.active {
+  background: rgba(212, 175, 55, 0.25);
+  border-color: var(--exp-gold);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+}
+
+/* Título integrado en la parte inferior del piano */
+.piano-title-container {
+  position: relative;
+  width: 100%;
+  margin-top: -15px;
+  z-index: 3;
+  text-align: center;
+}
+
+.piano-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--exp-gold);
+  letter-spacing: -0.3px;
+  text-shadow: 0 2px 15px rgba(0,0,0,0.9);
+  background: linear-gradient(180deg, transparent, rgba(0,0,0,0.85));
+  padding: 25px 20px 10px;
+  border-radius: 0 0 20px 20px;
+}
+
+.welcome-texts {
+  margin-bottom: 14px;
+  margin-top: 6px;
+}
+
+.welcome-texts h1 {
+  font-size: 1.9rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+  color: var(--exp-gold);
+  letter-spacing: -0.5px;
+}
+
+.welcome-texts p {
+  color: var(--exp-text-secondary);
+  font-size: 1rem;
+  line-height: 1.4;
+  padding: 0 10px;
+}
+
+.welcome-form {
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.name-input {
+  background: var(--exp-bg-glass);
+  backdrop-filter: blur(15px);
+  border: 1px solid var(--exp-glass-border);
+  border-radius: var(--radius-lg);
+  padding: 16px 20px;
+  font-size: 1.2rem;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 16px;
+  color: var(--exp-gold);
+  font-weight: 800;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
+  outline: none;
+  transition: all 0.3s var(--ease-smooth);
+}
+
+.name-input::placeholder {
+  color: rgba(255,255,255,0.3);
+  font-weight: 600;
+}
+
+.name-input:focus {
+  border-color: var(--exp-gold);
+  box-shadow: 0 4px 25px rgba(212, 175, 55, 0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+}
+
+.btn-start {
+  background: rgba(255,255,255,0.05);
+  color: #555;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 99px;
+  padding: 16px 40px;
+  font-weight: 900;
+  font-size: 1.2rem;
+  transition: all 0.3s var(--ease-smooth);
+  pointer-events: none;
+  width: 100%;
+}
+
+.btn-start.ready {
+  background: linear-gradient(135deg, var(--exp-gold), var(--exp-gold-dark));
+  border: none;
+  color: var(--exp-bg-primary);
+  pointer-events: auto;
+  cursor: pointer;
+  animation: pulseReady 2s infinite alternate;
+  box-shadow: var(--exp-shadow-gold);
+}
+
+.btn-start.ready:hover {
+  transform: scale(1.02);
+  box-shadow: var(--exp-shadow-gold-strong);
+}
+
+.btn-start.ready:active {
+  transform: scale(0.97);
+  animation: none;
+}
+
+@keyframes pulseReady {
+  from { box-shadow: 0 0 10px rgba(212, 175, 55, 0.3); }
+  to { box-shadow: 0 0 25px rgba(212, 175, 55, 0.6); }
+}
+
+.sofi-tip {
+  font-size: 0.85rem;
+  color: var(--exp-text-secondary);
+  text-align: center;
+  margin: 12px 16px;
+  background: rgba(212, 175, 55, 0.06);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  padding: 14px 18px;
+  border-radius: var(--radius-lg);
+  width: calc(100% - 32px);
+  max-width: 400px;
+  line-height: 1.5;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: all 0.3s var(--ease-smooth);
+  backdrop-filter: blur(10px);
+}
+
+.sofi-tip:hover {
+  border-color: var(--exp-gold);
+  box-shadow: var(--exp-shadow-gold);
+}
+
+.sofi-tip b {
+  color: var(--exp-gold);
+  font-weight: 800;
+}
+
+/* ==========================================
+   UI MENÚ PRINCIPAL
+   ========================================== */
+.content-wrapper {
+  padding: 24px 20px;
+  width: 100%;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.glass-panel {
+  background: var(--exp-bg-glass);
+  backdrop-filter: blur(20px) saturate(150%);
+  border: 1px solid var(--exp-glass-border);
+  border-radius: var(--radius-2xl);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.05);
+  padding: 20px;
+  width: 100%;
+}
+
+.menu-option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  background: var(--exp-bg-surface);
+  border: 1px solid var(--exp-glass-border);
+  border-radius: var(--radius-lg);
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: all 0.2s var(--ease-smooth);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  width: 100%;
+}
+
+.menu-option:hover {
+  transform: translateY(-3px);
+  border-color: var(--exp-gold);
+  box-shadow: var(--exp-shadow-gold);
+}
+
+.menu-option:active {
+  transform: scale(0.98);
+}
+
+.menu-option.band-mode {
+  background: linear-gradient(145deg, rgba(42, 34, 10, 0.8), rgba(20, 15, 0, 0.8));
+  border-color: rgba(212, 175, 55, 0.4);
+}
+
+.menu-option h3 {
+  font-size: 1.1rem;
+  color: var(--exp-gold);
+  margin-bottom: 4px;
+  font-weight: 800;
+}
+
+.menu-option p {
+  font-size: 0.8rem;
+  color: var(--exp-text-secondary);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.option-icon {
+  font-size: 1.6rem;
+  background: rgba(212, 175, 55, 0.12);
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+}
+
+.option-arrow {
+  font-size: 1.5rem;
+  color: var(--exp-gold);
+  opacity: 0.6;
+  margin-left: auto;
+}
+
+/* ==========================================
+   TAB BAR
+   ========================================== */
+.bottom-tab-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(180deg, 
+    rgba(10, 10, 10, 0.95) 0%, 
+    rgba(5, 5, 5, 0.98) 100%);
+  backdrop-filter: blur(25px) saturate(180%);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: 15px;
+  border-top: 1px solid rgba(212, 175, 55, 0.15);
+  z-index: 1000;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.tab-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: rgba(255,255,255,0.4);
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s var(--ease-smooth);
+  width: 25%;
+  padding: 8px 0;
+  border-radius: var(--radius-md);
+}
+
+.tab-item.active {
+  color: var(--exp-gold);
+}
+
+.tab-item:hover:not(.active) {
+  color: rgba(255,255,255,0.7);
+  background: rgba(255,255,255,0.03);
+}
+
+.tab-icon {
+  font-size: 1.5rem;
+  margin-bottom: 4px;
+  transition: transform 0.2s var(--ease-smooth);
+}
+
+.tab-item:active .tab-icon {
+  transform: scale(0.85);
+}
+
+/* ==========================================
+   GAMIFICATION & CATALOG
+   ========================================== */
+.gamification-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.streak-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--exp-bg-surface);
+  padding: 10px 18px;
+  border-radius: 99px;
+  font-weight: 800;
+  color: var(--exp-gold);
+  border: 1px solid var(--exp-glass-border);
+  font-size: 0.95rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.music-header {
+  text-align: center;
+  margin-bottom: 16px;
+  color: var(--exp-gold);
+  font-size: 1.9rem;
+  font-weight: 900;
+  width: 100%;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.song-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  background: var(--exp-bg-surface);
+  border-radius: var(--radius-lg);
+  margin-bottom: 12px;
+  border: 1px solid var(--exp-glass-border);
+  cursor: pointer;
+  transition: all 0.2s var(--ease-smooth);
+  width: 100%;
+}
+
+.song-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--exp-gold);
+  box-shadow: var(--exp-shadow-gold);
+}
+
+.song-card:active {
+  transform: scale(0.98);
+}
+
+.song-card.band-mode {
+  background: linear-gradient(145deg, rgba(42, 34, 10, 0.8), rgba(20, 15, 0, 0.8));
+  border-color: var(--exp-gold);
+}
+
+.song-icon {
+  font-size: 1.9rem;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(212, 175, 55, 0.12);
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+}
+
+.song-info {
+  flex: 1;
+}
+
+.song-title {
+  font-weight: 800;
+  font-size: 1.1rem;
+  margin-bottom: 3px;
+  color: #fff;
+}
+
+.song-diff {
+  font-size: 0.8rem;
+  color: var(--exp-gold);
+  letter-spacing: 2px;
+}
+
+/* ==========================================
+   UI DEL JUEGO
+   ========================================== */
+.tramo-selector {
+  display: flex;
+  background: rgba(255,255,255,0.06);
+  border-radius: var(--radius-md);
+  padding: 4px;
+  margin-bottom: 12px;
+  width: 100%;
+  max-width: 400px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.tramo-btn {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: rgba(255,255,255,0.5);
+  padding: 12px 4px;
+  border-radius: var(--radius-sm);
+  font-weight: 800;
+  font-size: 0.85rem;
+  transition: all 0.2s var(--ease-smooth);
+  cursor: pointer;
+}
+
+.tramo-btn.active {
+  background: var(--exp-gold);
+  color: var(--exp-bg-primary);
+  box-shadow: var(--exp-shadow-gold);
+}
+
+.music-modes {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.mode-btn {
+  flex: 1;
+  padding: 14px;
+  border-radius: var(--radius-lg);
+  font-weight: 800;
+  font-size: 0.95rem;
+  border: 1px solid var(--exp-glass-border);
+  background: var(--exp-bg-surface);
+  color: var(--exp-text-secondary);
+  transition: all 0.2s var(--ease-smooth);
+  cursor: pointer;
+}
+
+.mode-btn.active {
+  background: var(--exp-gold);
+  color: var(--exp-bg-primary);
+  border-color: var(--exp-gold);
+  box-shadow: var(--exp-shadow-gold);
+}
+
+.playback-controls {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  background: var(--exp-bg-surface);
+  padding: 20px 25px;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--exp-glass-border);
+  margin-bottom: 15px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.playback-controls.active {
+  display: flex;
+}
+
+.ctrl-row {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.play-tramo-btn {
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid var(--exp-gold);
+  color: var(--exp-gold);
+  padding: 12px 20px;
+  border-radius: 99px;
+  font-weight: 800;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  justify-content: center;
+  transition: all 0.2s var(--ease-smooth);
+}
+
+.play-tramo-btn:hover {
+  background: rgba(212, 175, 55, 0.2);
+}
+
+.play-tramo-btn:active {
+  transform: scale(0.97);
+}
+
+.speed-toggle {
+  background: transparent;
+  color: var(--exp-text-secondary);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: var(--radius-sm);
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s var(--ease-smooth);
+  flex-shrink: 0;
+}
+
+.speed-toggle.active {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.4);
+  color: #fff;
+}
+
+.btn-listen-all {
+  background: linear-gradient(135deg, var(--exp-gold), var(--exp-gold-dark));
+  color: var(--exp-bg-primary);
+  border: none;
+  padding: 14px 22px;
+  border-radius: 99px;
+  font-weight: 800;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+  box-shadow: var(--exp-shadow-gold);
+  transition: all 0.2s var(--ease-smooth);
+}
+
+.btn-listen-all:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--exp-shadow-gold-strong);
+}
+
+.btn-listen-all:active {
+  transform: scale(0.97);
+}
+
+.piano-wrapper-anim {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.4s var(--ease-spring);
+}
+
+.hidden-in-focus {
+  transition: opacity 0.2s, height 0.2s, margin 0.2s;
+}
+
+.focus-mode .hidden-in-focus {
+  opacity: 0;
+  pointer-events: none;
+  height: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+.piano-container {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  padding: 25px 15px;
+  background: var(--exp-bg-glass);
+  border-radius: var(--radius-2xl);
+  border: 1px solid var(--exp-glass-border);
+  position: relative;
+  width: 100%;
+  max-width: 450px;
+  height: 180px;
+  box-shadow: inset 0 10px 30px rgba(0,0,0,0.8), var(--exp-shadow-gold);
+}
+
+.piano-key {
+  width: 12%;
+  height: 100%;
+  background: linear-gradient(180deg, #ffffff 0%, #e8e8e8 100%);
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 15px;
+  z-index: 1;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.35);
+  transition: transform 0.08s, box-shadow 0.08s;
+}
+
+.piano-key:active, .piano-key.pressed {
+  transform: translateY(6px);
+  background: linear-gradient(180deg, #ffffff 0%, #fff4cc 100%);
+  box-shadow: inset 0 6px 12px rgba(0,0,0,0.4), 0 0 30px rgba(212, 175, 55, 0.9) !important;
+}
+
+.piano-key.pressed::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 15px rgba(212, 175, 55, 0.8);
+  background: rgba(212, 175, 55, 0.25);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.piano-key .note-label {
+  font-size: 0.85rem;
+  font-weight: 900;
+  color: #222;
+  pointer-events: none;
+}
+
+.piano-key.hint {
+  animation: superGlow 1s infinite alternate;
+  z-index: 2;
+  border-bottom: 5px solid var(--exp-gold);
+}
+
+@keyframes superGlow {
+  0% { box-shadow: 0 0 10px rgba(212, 175, 55, 0.4), inset 0 -10px 20px rgba(212, 175, 55, 0.2); }
+  100% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.9), inset 0 -20px 30px rgba(212, 175, 55, 0.6); }
+}
+
+.flash-green::after {
+  content:'';
+  position:absolute;
+  inset:0;
+  background: rgba(50,215,75,0.35);
+  box-shadow: 0 0 25px var(--exp-success);
+  border-radius:inherit;
+  animation: flashSuccess 0.4s ease-out;
+}
+
+.flash-red::after {
+  content:'';
+  position:absolute;
+  inset:0;
+  background: rgba(255,69,58,0.35);
+  box-shadow: 0 0 25px var(--exp-error);
+  border-radius:inherit;
+  animation: flashError 0.4s ease-out;
+}
+
+@keyframes flashSuccess {
+  0% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.05); }
+}
+
+@keyframes flashError {
+  0% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.05); }
+}
+
+/* ==========================================
+   MODAL DE FELICITACIÓN CON BRANDING COMPLETO
+   ========================================== */
+.theory-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  backdrop-filter: blur(25px) saturate(180%);
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.4s var(--ease-smooth);
+}
+
+.theory-modal.active {
+  display: flex;
+  opacity: 1;
+}
+
+.theory-modal-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 400px;
+  width: 100%;
+  max-height: 90vh;  /* CORREGIDO: Más espacio para móviles pequeños */
+  overflow: hidden;
+  border-radius: var(--radius-2xl);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.6), 0 0 40px rgba(212, 175, 55, 0.15);
+}
+
+/* HEADER DEL MODAL */
+.theory-modal-header {
+  width: 100%;
+  padding: 14px 20px;
+  background: linear-gradient(180deg, 
+    rgba(28, 28, 30, 0.98) 0%, 
+    rgba(20, 20, 22, 0.95) 100%);
+  backdrop-filter: blur(20px) saturate(150%);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05) inset;
+}
+
+.theory-header-branding {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.theory-logo-animado {
+  width: 130px;
+  height: auto;
+}
+
+.theory-logo-animado .icon-path {
+  fill: transparent;
+  stroke: var(--exp-gold);
+  stroke-width: 1.5;
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  animation: expDrawLine 1s var(--ease-smooth) forwards,
+             expFillSolid 0.5s ease-in 0.8s forwards;
+}
+
+.theory-logo-animado .text-group-wrapper {
+  clip-path: inset(0 100% 0 0);
+  animation: expSweepReveal 1s var(--ease-smooth) 0.6s forwards;
+}
+
+.theory-logo-animado .exp-system {
+  opacity: 0;
+  animation: expFadeIn 0.6s ease 1.2s forwards;
+}
+
+.theory-tagline {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--exp-text-secondary);
+  letter-spacing: 0.5px;
+  opacity: 0;
+  white-space: nowrap;
+  animation: taglineReveal 0.6s var(--ease-spring) 1.5s forwards;
+  margin-left: 4px;
+  padding-left: 8px;
+  border-left: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+/* CONTENIDO DEL MODAL */
+.theory-content {
+  background: linear-gradient(145deg, 
+    rgba(28, 28, 30, 0.98) 0%, 
+    rgba(20, 20, 22, 0.95) 100%);
+  border-left: 1px solid var(--exp-glass-border-strong);
+  border-right: 1px solid var(--exp-glass-border-strong);
+  padding: 25px 20px;
+  text-align: center;
+  width: 100%;
+  position: relative;
+  overflow-y: auto;  /* CORREGIDO: Scroll garantizado */
+  -webkit-overflow-scrolling: touch;  /* CORREGIDO: iOS smooth scroll */
+  flex: 1;
+  max-height: calc(90vh - 180px);  /* CORREGIDO: Ajustado para footer más grande */
+}
+
+.theory-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    var(--exp-gold), 
+    var(--exp-gold-light), 
+    var(--exp-gold), 
+    transparent);
+}
+
+/* FOOTER DEL MODAL */
+.theory-modal-footer {
+  width: 100%;
+  padding: 20px 25px 25px;
+  background: linear-gradient(180deg, 
+    rgba(20, 20, 22, 0.95) 0%, 
+    rgba(15, 15, 17, 0.98) 100%);
+  border-top: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: 0 0 var(--radius-2xl) var(--radius-2xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  min-height: 80px;
+}
+
+.theory-footer-web {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--exp-gold);
+  text-decoration: none;
+  letter-spacing: 1.5px;
+  position: relative;
+  transition: all 0.3s var(--ease-smooth);
+}
+
+.theory-footer-web::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--exp-gold), transparent);
+  transition: width 0.4s var(--ease-smooth);
+}
+
+.theory-footer-web:hover {
+  color: #fff;
+  text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+}
+
+.theory-footer-web:hover::after {
+  width: 120%;
+}
+
+.theory-footer-logo {
+  width: 50px;
+  height: 50px;
+  filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.4));
+  transition: transform 0.3s var(--ease-spring), filter 0.3s ease;
+  display: block;
+}
+
+/* CORREGIDO: Sincronizado timing con el resto de logos (0.8s delay) */
+.theory-footer-logo .icon-path {
+  fill: transparent;
+  stroke: var(--exp-gold);
+  stroke-width: 2;
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  animation: expDrawLine 1s var(--ease-smooth) 0.8s forwards,
+             expFillSolid 0.5s ease-in 1.6s forwards;
+}
+
+.theory-footer-logo:hover {
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.6));
+}
+
+/* Branding en modal */
+.theory-branding {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  opacity: 0.8;
+}
+
+.theory-branding svg {
+  width: 30px;
+  height: auto;
+}
+
+.theory-branding-text {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--exp-gold);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Mensaje del Maestro IA */
+.theory-message {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.theory-message::before {
+  content: '"';
+  position: absolute;
+  top: -10px;
+  left: 15px;
+  font-size: 3rem;
+  color: var(--exp-gold);
+  opacity: 0.3;
+  font-family: Georgia, serif;
+  line-height: 1;
+}
+
+.theory-message-author {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.theory-message-author .author-avatar {
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(135deg, var(--exp-gold), var(--exp-gold-dark));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+}
+
+.theory-message-author .author-name {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--exp-gold);
+  letter-spacing: 0.5px;
+}
+
+.theory-message-text {
+  font-size: 0.95rem;
+  color: var(--exp-text-secondary);
+  line-height: 1.6;
+  font-style: italic;
+  padding-left: 8px;
+}
+
+.theory-stats {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 24px;
+  padding: 12px 0;
+  border-top: 1px solid rgba(212, 175, 55, 0.15);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+.theory-stat {
+  text-align: center;
+}
+
+.theory-stat-value {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--exp-gold);
+}
+
+.theory-stat-label {
+  font-size: 0.7rem;
+  color: var(--exp-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.theory-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.4));
+  animation: iconBounce 0.6s var(--ease-spring);
+}
+
+@keyframes iconBounce {
+  0% { transform: scale(0) rotate(-20deg); }
+  50% { transform: scale(1.2) rotate(5deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+.theory-content h2 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 16px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.theory-content p {
+  font-size: 1rem;
+  color: var(--exp-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 24px;
+  padding: 0 10px;
+}
+
+.theory-stars {
+  font-size: 2.2rem;
+  margin-bottom: 28px;
+  letter-spacing: 4px;
+  animation: starsPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes starsPulse {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.3)); }
+  50% { transform: scale(1.1); filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.6)); }
+}
+
+.btn-theory {
+  background: linear-gradient(135deg, var(--exp-gold), var(--exp-gold-dark));
+  color: var(--exp-bg-primary);
+  border: none;
+  padding: 16px 36px;
+  border-radius: 99px;
+  font-weight: 900;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: var(--exp-shadow-gold);
+  transition: all 0.3s var(--ease-smooth);
+  width: 100%;
+  max-width: 240px;
+}
+
+.btn-theory:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--exp-shadow-gold-strong);
+}
+
+.btn-theory:active {
+  transform: scale(0.97);
+}
+
+/* Dato teórico adicional */
+.theory-fact {
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  margin-bottom: 24px;
+  font-size: 0.9rem;
+  color: var(--exp-text-secondary);
+  line-height: 1.5;
+}
+
+.theory-fact strong {
+  color: var(--exp-gold);
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.equalizer {
+  display: none;
+  align-items: flex-end;
+  gap: 3px;
+  height: 18px;
+  margin-left: 10px;
+}
+
+.equalizer.active {
+  display: flex;
+}
+
+.eq-bar {
+  width: 4px;
+  background: var(--exp-gold);
+  border-radius: 2px;
+  animation: eqBounce 0.5s infinite alternate;
+}
+
+.eq-bar:nth-child(2) { animation-delay: 0.1s; }
+.eq-bar:nth-child(3) { animation-delay: 0.2s; }
+
+@keyframes eqBounce {
+  0% { height: 4px; }
+  100% { height: 18px; }
+}
+
+/* ==========================================
+   FEEDBACK MULTI-DISPOSITIVO
+   ========================================== */
+
+/* Mobile: Touch feedback */
+@media (hover: none) and (pointer: coarse) {
+  .menu-option:active,
+  .btn-start:active,
+  .piano-key:active {
+    transform: scale(0.95);
+  }
+  
+  .tab-item:active {
+    background: rgba(212, 175, 55, 0.1);
+    border-radius: var(--radius-sm);
+  }
+}
+
+/* Tablet: Medium touch */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .menu-option:hover {
+    transform: translateY(-3px);
+  }
+  
+  .piano-key:active {
+    transform: translateY(8px);
+  }
+}
+
+/* Desktop: Hover effects */
+@media (hover: hover) and (pointer: fine) {
+  .menu-option:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.25);
+  }
+  
+  .btn-start.ready:hover {
+    transform: scale(1.03);
+  }
+  
+  .piano-key:hover {
+    box-shadow: 0 6px 15px rgba(212, 175, 55, 0.35);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ==========================================
+   EFECTOS ADICIONALES DE PROFUNDIDAD
+   ========================================== */
+.particle {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: var(--exp-gold);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.6;
+  animation: float 15s infinite ease-in-out;
+}
+
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0.6;
+  }
+  25% { 
+    transform: translateY(-30px) translateX(15px) scale(1.2);
+    opacity: 0.8;
+  }
+  50% { 
+    transform: translateY(-20px) translateX(-10px) scale(0.8);
+    opacity: 0.4;
+  }
+  75% { 
+    transform: translateY(-40px) translateX(20px) scale(1.1);
+    opacity: 0.7;
+  }
+}
+
+/* ==========================================
+   BADGES ESTILOS ADICIONALES
+   ========================================== */
+.badge-item {
+  transition: transform 0.2s var(--ease-smooth);
+}
+
+.badge-item:hover {
+  transform: translateY(-3px);
+}
+</style>
+<base target="_blank">
+<base target="_blank">
+</head>
+<body>
+
+<!-- SPLASH SCREEN MEJORADO -->
+<div id="splash-screen">
+  <div class="splash-content">
+    <svg class="exp-branding-logo exp-animado" viewBox="0 0 380 100" aria-label="Explicalia System" role="img">
+      <g transform="translate(0, 5)">
+        <path class="icon-path" d="M 10 15 L 50 35 L 90 15 L 90 30 L 58 46 L 58 60 L 42 60 L 42 46 L 10 30 Z"/>
+        <path class="icon-path" d="M 10 50 L 50 70 L 90 50 L 90 65 L 50 85 L 10 65 Z"/>
+      </g>
+      <g class="text-group-wrapper">
+        <text class="exp-text-base" x="110" y="55"><tspan class="exp-word">Explical</tspan><tspan class="exp-ia">ia</tspan></text>
+      </g>
+      <text x="115" y="85" class="exp-system">System</text>
+    </svg>
+    <div class="splash-tagline-container">
+      <div class="splash-tagline" data-i18n="tagline">"aprende jugando"</div>
+    </div>
+    <div class="splash-web">www.explicalia.com</div>
+  </div>
+</div>
+
+<!-- FONDO ESPACIAL CON PROFUNDIDAD -->
+<div class="space-bg"></div>
+<div class="center-glow"></div>
+
+<!-- PANTALLA DE BIENVENIDA -->
+<div id="screen-welcome" class="screen active">
+  <div class="welcome-wrapper">
+    <!-- Header de branding -->
+    <div class="welcome-branding">
+      <svg class="exp-branding-logo exp-animado" viewBox="0 0 380 100" aria-label="Explicalia System">
+        <g transform="translate(0, 5)">
+          <path class="icon-path" d="M 10 15 L 50 35 L 90 15 L 90 30 L 58 46 L 58 60 L 42 60 L 42 46 L 10 30 Z"/>
+          <path class="icon-path" d="M 10 50 L 50 70 L 90 50 L 90 65 L 50 85 L 10 65 Z"/>
+        </g>
+        <g class="text-group-wrapper">
+          <text class="exp-text-base" x="110" y="55"><tspan class="exp-word">Explical</tspan><tspan class="exp-ia">ia</tspan></text>
+        </g>
+        <text x="115" y="85" class="exp-system">System</text>
+      </svg>
+      <div class="brand-tagline" data-i18n="tagline" style="animation: taglineReveal 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 2s forwards;">"aprende jugando"</div>
+    </div>
+    
+    <!-- LÍNEA DIVISORIA TIPO APPLE -->
+    <div class="welcome-divider"></div>
+    
+    <!-- Piano 3D -->
+    <div class="piano-3d-wrapper">
+      <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#F5D77E"/>
+            <stop offset="30%" stop-color="#E8C547"/>
+            <stop offset="50%" stop-color="#D4AF37"/>
+            <stop offset="70%" stop-color="#AA8C2C"/>
+            <stop offset="100%" stop-color="#8B6914"/>
+          </linearGradient>
+          <linearGradient id="piano-body" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#3a3a3a"/>
+            <stop offset="40%" stop-color="#1a1a1a"/>
+            <stop offset="100%" stop-color="#0a0a0a"/>
+          </linearGradient>
+          <linearGradient id="lid-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="rgba(255,255,255,0.2)"/>
+            <stop offset="50%" stop-color="rgba(255,255,255,0.05)"/>
+            <stop offset="100%" stop-color="transparent"/>
+          </linearGradient>
+          <linearGradient id="key-white" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#ffffff"/>
+            <stop offset="85%" stop-color="#f0f0f0"/>
+            <stop offset="100%" stop-color="#e0e0e0"/>
+          </linearGradient>
+          <linearGradient id="key-black" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#2a2a2a"/>
+            <stop offset="20%" stop-color="#1a1a1a"/>
+            <stop offset="100%" stop-color="#0a0a0a"/>
+          </linearGradient>
+          <filter id="soft-shadow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="8"/>
+            <feOffset dx="0" dy="8" result="offsetblur"/>
+            <feComponentTransfer>
+              <feFuncA type="linear" slope="0.4"/>
+            </feComponentTransfer>
+            <feMerge>
+              <feMergeNode/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+            <feMerge>
+              <feMergeNode in="coloredBlur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+        <g transform="translate(50, 50)">
+          <ellipse cx="200" cy="320" rx="180" ry="25" fill="rgba(0,0,0,0.4)" filter="url(#soft-shadow)"/>
+          <path d="M 60 200 L 60 300" stroke="#1a1a1a" stroke-width="8" stroke-linecap="round"/>
+          <path d="M 340 200 L 340 300" stroke="#1a1a1a" stroke-width="8" stroke-linecap="round"/>
+          <path d="M 40 180 Q 40 150 80 140 L 280 100 Q 380 80 420 120 Q 440 140 420 180 L 380 220 Q 360 240 320 230 L 120 250 Q 60 260 40 220 Z" 
+                fill="url(#piano-body)" 
+                stroke="url(#gold-grad)" 
+                stroke-width="3"
+                filter="url(#soft-shadow)"/>
+          <path d="M 50 170 Q 50 155 85 148 L 275 110 Q 365 92 400 125" 
+                fill="none" 
+                stroke="url(#lid-gradient)" 
+                stroke-width="2"
+                opacity="0.6"/>
+          <path d="M 80 240 L 80 310" stroke="url(#gold-grad)" stroke-width="6" stroke-linecap="round"/>
+          <path d="M 320 230 L 320 310" stroke="url(#gold-grad)" stroke-width="6" stroke-linecap="round"/>
+          <circle cx="80" cy="315" r="5" fill="url(#gold-grad)"/>
+          <circle cx="320" cy="315" r="5" fill="url(#gold-grad)"/>
+          <path d="M 90 160 Q 200 140 350 130 Q 380 128 390 150 L 370 190 Q 360 200 330 195 L 140 210 Q 110 215 100 200 Z" 
+                fill="#0f0f0f"/>
+          <g opacity="0.4">
+            <line x1="110" y1="165" x2="110" y2="140" stroke="url(#gold-grad)" stroke-width="0.8"/>
+            <line x1="130" y1="163" x2="130" y2="138" stroke="url(#gold-grad)" stroke-width="0.8"/>
+            <line x1="150" y1="161" x2="150" y2="136" stroke="url(#gold-grad)" stroke-width="0.8"/>
+            <line x1="170" y1="159" x2="170" y2="134" stroke="url(#gold-grad)" stroke-width="0.8"/>
+            <line x1="190" y1="157" x2="190" y2="132" stroke="url(#gold-grad)" stroke-width="0.8"/>
+            <line x1="210" y1="155" x2="210" y2="130" stroke="url(#gold-grad)" stroke-width="0.8"/>
+            <line x1="230" y1="153" x2="230" y2="128" stroke="url(#gold-grad)" stroke-width="0.8"/>
+            <line x1="250" y1="151" x2="250" y2="126" stroke="url(#gold-grad)" stroke-width="0.8"/>
+            <line x1="270" y1="149" x2="270" y2="124" stroke="url(#gold-grad)" stroke-width="0.8"/>
+            <line x1="290" y1="147" x2="290" y2="122" stroke="url(#gold-grad)" stroke-width="0.8"/>
+            <line x1="310" y1="145" x2="310" y2="120" stroke="url(#gold-grad)" stroke-width="0.8"/>
+            <line x1="330" y1="143" x2="330" y2="118" stroke="url(#gold-grad)" stroke-width="0.8"/>
+          </g>
+          <path d="M 30 220 L 370 200 L 380 280 L 20 300 Z" 
+                fill="#1a1a1a" 
+                stroke="url(#gold-grad)" 
+                stroke-width="2"/>
+          <g transform="translate(40, 225) skewY(-5)">
+            <rect x="0" y="0" width="22" height="60" fill="url(#key-white)" stroke="#ccc" stroke-width="0.5" rx="2"/>
+            <rect x="24" y="0" width="22" height="60" fill="url(#key-white)" stroke="#ccc" stroke-width="0.5" rx="2"/>
+            <rect x="48" y="0" width="22" height="60" fill="url(#key-white)" stroke="#ccc" stroke-width="0.5" rx="2"/>
+            <rect x="72" y="0" width="22" height="60" fill="url(#key-white)" stroke="#ccc" stroke-width="0.5" rx="2"/>
+            <rect x="96" y="0" width="22" height="60" fill="url(#key-white)" stroke="#ccc" stroke-width="0.5" rx="2"/>
+            <rect x="120" y="0" width="22" height="60" fill="url(#key-white)" stroke="#ccc" stroke-width="0.5" rx="2"/>
+            <rect x="144" y="0" width="22" height="60" fill="url(#key-white)" stroke="#ccc" stroke-width="0.5" rx="2"/>
+            <rect x="168" y="0" width="22" height="60" fill="url(#key-white)" stroke="#ccc" stroke-width="0.5" rx="2"/>
+            <rect x="192" y="0" width="22" height="60" fill="url(#key-white)" stroke="#ccc" stroke-width="0.5" rx="2"/>
+            <rect x="216" y="0" width="22" height="60" fill="url(#key-white)" stroke="#ccc" stroke-width="0.5" rx="2"/>
+            <rect x="240" y="0" width="22" height="60" fill="url(#key-white)" stroke="#ccc" stroke-width="0.5" rx="2"/>
+            <rect x="264" y="0" width="22" height="60" fill="url(#key-white)" stroke="#ccc" stroke-width="0.5" rx="2"/>
+            <rect x="16" y="0" width="14" height="38" fill="url(#key-black)" rx="1"/>
+            <rect x="40" y="0" width="14" height="38" fill="url(#key-black)" rx="1"/>
+            <rect x="88" y="0" width="14" height="38" fill="url(#key-black)" rx="1"/>
+            <rect x="112" y="0" width="14" height="38" fill="url(#key-black)" rx="1"/>
+            <rect x="136" y="0" width="14" height="38" fill="url(#key-black)" rx="1"/>
+            <rect x="184" y="0" width="14" height="38" fill="url(#key-black)" rx="1"/>
+            <rect x="208" y="0" width="14" height="38" fill="url(#key-black)" rx="1"/>
+            <rect x="256" y="0" width="14" height="38" fill="url(#key-black)" rx="1"/>
+          </g>
+          <circle cx="380" cy="160" r="8" fill="url(#gold-grad)" opacity="0.8"/>
+          <text x="360" y="165" fill="#D4AF37" font-size="12" font-family="serif" font-style="italic" opacity="0.6">SofiNoa</text>
+        </g>
+        <g opacity="0.8">
+          <text x="380" y="80" fill="#D4AF37" font-size="24" filter="url(#glow)">
+            <animate attributeName="y" values="80;60;80" dur="3s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.8;0.3;0.8" dur="3s" repeatCount="indefinite"/>
+            🎵
+          </text>
+          <text x="100" y="100" fill="#D4AF37" font-size="18" filter="url(#glow)">
+            <animate attributeName="y" values="100;80;100" dur="4s" repeatCount="indefinite" begin="1s"/>
+            <animate attributeName="opacity" values="0.6;0.2;0.6" dur="4s" repeatCount="indefinite" begin="1s"/>
+            🎶
+          </text>
+          <text x="420" y="200" fill="#D4AF37" font-size="20" filter="url(#glow)">
+            <animate attributeName="y" values="200;180;200" dur="3.5s" repeatCount="indefinite" begin="0.5s"/>
+            <animate attributeName="opacity" values="0.7;0.3;0.7" dur="3.5s" repeatCount="indefinite" begin="0.5s"/>
+            ♪
+          </text>
+        </g>
+      </svg>
+    </div>
+    
+    <div class="piano-title-container">
+      <h1 class="piano-title" data-i18n="appTitle">La música de SofiNoa</h1>
+    </div>
+    
+    <!-- Selector de idioma -->
+    <div class="language-selector">
+      <span data-i18n="selectLanguage">Idioma</span>
+      <div class="language-buttons">
+        <button onclick="setLanguage('es')" class="lang-btn active" data-lang="es">🇪🇸</button>
+        <button onclick="setLanguage('en')" class="lang-btn" data-lang="en">🇬🇧</button>
+        <button onclick="setLanguage('ro')" class="lang-btn" data-lang="ro">🇷🇴</button>
+        <button onclick="setLanguage('fr')" class="lang-btn" data-lang="fr">🇫🇷</button>
+        <button onclick="setLanguage('ca')" class="lang-btn" data-lang="ca">🎗️</button>
+      </div>
+    </div>
+    
+    <div class="piano-shadow"></div>
+    
+    <div class="welcome-texts">
+      <p data-i18n="welcomeSubtitle">Descubre el músico que llevas dentro.</p>
+    </div>
+    
+    <div class="sofi-tip">
+      🎓 <b data-i18n="maestroName">Maestro IAExplicalia:</b> <span data-i18n="maestroTipWelcome">Introduce tu nombre para guardar tus logros mágicamente.</span>
+    </div>
+    
+    <form class="welcome-form" onsubmit="event.preventDefault(); startGame(); return false;">
+      <input type="text" id="name-input" class="name-input" data-i18n-placeholder="namePlaceholder" placeholder="¿Cómo te llamas?" autocomplete="off" autocorrect="off" spellcheck="false" oninput="checkNameInput()">
+      <button type="submit" id="start-btn" class="btn-start" data-i18n="startButton">¡A Tocar!</button>
+    </form>
+    
+    <!-- Footer con logo animado -->
+    <footer class="explicalia-footer">
+      <a href="https://www.explicalia.com" target="_blank" class="footer-web">www.explicalia.com</a>
+      <svg class="footer-logo-animado exp-animado" viewBox="0 0 380 100" aria-label="Explicalia">
+        <g transform="translate(0, 5)">
+          <path class="icon-path" d="M 10 15 L 50 35 L 90 15 L 90 30 L 58 46 L 58 60 L 42 60 L 42 46 L 10 30 Z"/>
+          <path class="icon-path" d="M 10 50 L 50 70 L 90 50 L 90 65 L 50 85 L 10 65 Z"/>
+        </g>
+        <g class="text-group-wrapper">
+          <text class="exp-text-base" x="110" y="55"><tspan class="exp-word">Explical</tspan><tspan class="exp-ia">ia</tspan></text>
+        </g>
+        <text x="115" y="85" class="exp-system">System</text>
+      </svg>
+    </footer>
+  </div>
+</div>
+
+<!-- TAB BAR -->
+<div class="bottom-tab-bar" id="tab-bar" style="display: none;">
+  <div class="tab-item active" onclick="navTo('home')"><span class="tab-icon">🏠</span><span data-i18n="home">Inicio</span></div>
+  <div class="tab-item" onclick="navTo('lessons')"><span class="tab-icon">🎹</span><span data-i18n="piano">Piano</span></div>
+  <div class="tab-item" onclick="navTo('band')"><span class="tab-icon">🥁</span><span data-i18n="band">Banda</span></div>
+  <div class="tab-item" onclick="navTo('progress')"><span class="tab-icon">🏆</span><span data-i18n="achievementsTab">Logros</span></div>
+</div>
+
+<!-- SCREEN: HOME -->
+<div id="screen-home" class="screen">
+  <header class="game-header">
+    <div class="header-branding-container">
+      <svg class="exp-branding-logo exp-animado" viewBox="0 0 380 100" aria-label="Explicalia System">
+        <g transform="translate(0, 5)">
+          <path class="icon-path" d="M 10 15 L 50 35 L 90 15 L 90 30 L 58 46 L 58 60 L 42 60 L 42 46 L 10 30 Z"/>
+          <path class="icon-path" d="M 10 50 L 50 70 L 90 50 L 90 65 L 50 85 L 10 65 Z"/>
+        </g>
+        <g class="text-group-wrapper">
+          <text class="exp-text-base" x="110" y="55"><tspan class="exp-word">Explical</tspan><tspan class="exp-ia">ia</tspan></text>
+        </g>
+        <text x="115" y="85" class="exp-system">System</text>
+      </svg>
+      <span class="brand-tagline" data-i18n="tagline">"aprende jugando"</span>
+    </div>
+  </header>
+  <div class="content-wrapper" style="padding-top: 16px;">
+    <div class="gamification-header">
+      <div class="streak-badge">🔥 <span id="streakCount">0</span> <span data-i18n="streak">días</span></div>
+      <div class="streak-badge">⭐ <span id="totalStars">0</span></div>
+    </div>
+    <h1 style="font-size: 2.2rem; font-weight: 900; margin-bottom: 8px; text-align: center;"><span data-i18n="hello">Hola</span>, <span class="user-name" style="color: var(--exp-gold);"></span></h1>
+    <p style="color: var(--exp-text-secondary); margin-bottom: 20px; text-align: center;" data-i18n="howToLearn">¿Cómo te gustaría aprender hoy?</p>
+    <div class="sofi-tip" style="margin-bottom: 20px;">
+      🎓 <b data-i18n="maestroName">Maestro IAExplicalia:</b> <span data-i18n="maestroTipMenu">Si es tu primera vez, elige el <b>Modo Solo Piano</b> para calentar los dedos.</span>
+    </div>
+    <div class="menu-option" onclick="navTo('lessons')">
+      <div class="option-icon">🎹</div>
+      <div><h3 data-i18n="soloPiano">Modo Solo Piano</h3><p data-i18n="soloPianoDesc">Concéntrate en la melodía a tu ritmo.</p></div>
+      <div class="option-arrow">›</div>
+    </div>
+    <div class="menu-option band-mode" onclick="navTo('band')">
+      <div class="option-icon" style="background: rgba(255,255,255,0.1);">🥁</div>
+      <div><h3 style="color: #fff;" data-i18n="bandMode">Concierto en Banda</h3><p data-i18n="bandModeDesc">Toca con acompañamiento orquestal.</p></div>
+      <div class="option-arrow" style="color:#fff;">›</div>
+    </div>
+  </div>
+  <footer class="explicalia-footer">
+    <a href="https://www.explicalia.com" target="_blank" class="footer-web">www.explicalia.com</a>
+    <svg class="footer-logo-animado exp-animado" viewBox="0 0 380 100" aria-label="Explicalia">
+      <g transform="translate(0, 5)">
+        <path class="icon-path" d="M 10 15 L 50 35 L 90 15 L 90 30 L 58 46 L 58 60 L 42 60 L 42 46 L 10 30 Z"/>
+        <path class="icon-path" d="M 10 50 L 50 70 L 90 50 L 90 65 L 50 85 L 10 65 Z"/>
+      </g>
+      <g class="text-group-wrapper">
+        <text class="exp-text-base" x="110" y="55"><tspan class="exp-word">Explical</tspan><tspan class="exp-ia">ia</tspan></text>
+      </g>
+      <text x="115" y="85" class="exp-system">System</text>
+    </svg>
+  </footer>
+</div>
+
+<!-- SCREEN: LESSONS -->
+<div id="screen-lessons" class="screen">
+  <header class="game-header">
+    <div class="header-branding-container">
+      <svg class="exp-branding-logo exp-animado" viewBox="0 0 380 100" aria-label="Explicalia System">
+        <g transform="translate(0, 5)"><path class="icon-path" d="M 10 15 L 50 35 L 90 15 L 90 30 L 58 46 L 58 60 L 42 60 L 42 46 L 10 30 Z"/><path class="icon-path" d="M 10 50 L 50 70 L 90 50 L 90 65 L 50 85 L 10 65 Z"/></g>
+        <g class="text-group-wrapper"><text class="exp-text-base" x="110" y="55"><tspan class="exp-word">Explical</tspan><tspan class="exp-ia">ia</tspan></text></g>
+        <text x="115" y="85" class="exp-system">System</text>
+      </svg>
+      <span class="brand-tagline" data-i18n="tagline">"aprende jugando"</span>
+    </div>
+  </header>
+  <div class="content-wrapper" style="padding-top: 16px;">
+    <h2 class="music-header" data-i18n="soloPianoTitle">Solo Piano</h2>
+    <div class="sofi-tip" style="margin-bottom: 20px;">🎓 <b data-i18n="maestroName">Maestro IAExplicalia:</b> <span data-i18n="maestroTipCatalog">Empieza por las canciones de 1 estrella. ¡Son muy fáciles!</span></div>
+    <div id="songCatalogGrid" style="width: 100%; max-width: 400px; margin-bottom: 16px;"></div>
+  </div>
+  <footer class="explicalia-footer">
+    <a href="https://www.explicalia.com" target="_blank" class="footer-web">www.explicalia.com</a>
+    <svg class="footer-logo-animado exp-animado" viewBox="0 0 380 100" aria-label="Explicalia">
+      <g transform="translate(0, 5)">
+        <path class="icon-path" d="M 10 15 L 50 35 L 90 15 L 90 30 L 58 46 L 58 60 L 42 60 L 42 46 L 10 30 Z"/>
+        <path class="icon-path" d="M 10 50 L 50 70 L 90 50 L 90 65 L 50 85 L 10 65 Z"/>
+      </g>
+      <g class="text-group-wrapper">
+        <text class="exp-text-base" x="110" y="55"><tspan class="exp-word">Explical</tspan><tspan class="exp-ia">ia</tspan></text>
+      </g>
+      <text x="115" y="85" class="exp-system">System</text>
+    </svg>
+  </footer>
+</div>
+
+<!-- SCREEN: BAND -->
+<div id="screen-band" class="screen">
+  <header class="game-header">
+    <div class="header-branding-container">
+      <svg class="exp-branding-logo exp-animado" viewBox="0 0 380 100" aria-label="Explicalia System">
+        <g transform="translate(0, 5)"><path class="icon-path" d="M 10 15 L 50 35 L 90 15 L 90 30 L 58 46 L 58 60 L 42 60 L 42 46 L 10 30 Z"/><path class="icon-path" d="M 10 50 L 50 70 L 90 50 L 90 65 L 50 85 L 10 65 Z"/></g>
+        <g class="text-group-wrapper"><text class="exp-text-base" x="110" y="55"><tspan class="exp-word">Explical</tspan><tspan class="exp-ia">ia</tspan></text></g>
+        <text x="115" y="85" class="exp-system">System</text>
+      </svg>
+      <span class="brand-tagline" data-i18n="tagline">"aprende jugando"</span>
+    </div>
+  </header>
+  <div class="content-wrapper" style="padding-top: 16px;">
+    <h2 class="music-header" style="color: #fff;" data-i18n="bandTitle">Banda 🥁</h2>
+    <div class="sofi-tip" style="margin-bottom: 20px;">🎓 <b data-i18n="maestroName">Maestro IAExplicalia:</b> <span data-i18n="maestroTipBand">Toca el piano mientras la Inteligencia Musical crea acordes para ti.</span></div>
+    <div id="bandCatalogGrid" style="width: 100%; max-width: 400px; margin-bottom: 16px;"></div>
+  </div>
+  <footer class="explicalia-footer">
+    <a href="https://www.explicalia.com" target="_blank" class="footer-web">www.explicalia.com</a>
+    <svg class="footer-logo-animado exp-animado" viewBox="0 0 380 100" aria-label="Explicalia">
+      <g transform="translate(0, 5)">
+        <path class="icon-path" d="M 10 15 L 50 35 L 90 15 L 90 30 L 58 46 L 58 60 L 42 60 L 42 46 L 10 30 Z"/>
+        <path class="icon-path" d="M 10 50 L 50 70 L 90 50 L 90 65 L 50 85 L 10 65 Z"/>
+      </g>
+      <g class="text-group-wrapper">
+        <text class="exp-text-base" x="110" y="55"><tspan class="exp-word">Explical</tspan><tspan class="exp-ia">ia</tspan></text>
+      </g>
+      <text x="115" y="85" class="exp-system">System</text>
+    </svg>
+  </footer>
+</div>
+
+<!-- SCREEN: PROGRESS -->
+<div id="screen-progress" class="screen">
+  <header class="game-header">
+    <div class="header-branding-container">
+      <svg class="exp-branding-logo exp-animado" viewBox="0 0 380 100" aria-label="Explicalia System">
+        <g transform="translate(0, 5)"><path class="icon-path" d="M 10 15 L 50 35 L 90 15 L 90 30 L 58 46 L 58 60 L 42 60 L 42 46 L 10 30 Z"/><path class="icon-path" d="M 10 50 L 50 70 L 90 50 L 90 65 L 50 85 L 10 65 Z"/></g>
+        <g class="text-group-wrapper"><text class="exp-text-base" x="110" y="55"><tspan class="exp-word">Explical</tspan><tspan class="exp-ia">ia</tspan></text></g>
+        <text x="115" y="85" class="exp-system">System</text>
+      </svg>
+      <span class="brand-tagline" data-i18n="tagline">"aprende jugando"</span>
+    </div>
+  </header>
+  <div class="content-wrapper" style="padding-top: 16px;">
+    <h2 class="music-header"><span data-i18n="achievements">Logros de</span> <span class="user-name"></span></h2>
+    <div class="glass-panel" style="margin-bottom: 16px;">
+      <h3 style="margin-bottom: 16px; text-align: center; color: var(--exp-text-secondary); font-size: 1.1rem;" data-i18n="yourCollection">Tu Colección</h3>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;" id="badgesGrid"></div>
+    </div>
+  </div>
+  <footer class="explicalia-footer">
+    <a href="https://www.explicalia.com" target="_blank" class="footer-web">www.explicalia.com</a>
+    <svg class="footer-logo-animado exp-animado" viewBox="0 0 380 100" aria-label="Explicalia">
+      <g transform="translate(0, 5)">
+        <path class="icon-path" d="M 10 15 L 50 35 L 90 15 L 90 30 L 58 46 L 58 60 L 42 60 L 42 46 L 10 30 Z"/>
+        <path class="icon-path" d="M 10 50 L 50 70 L 90 50 L 90 65 L 50 85 L 10 65 Z"/>
+      </g>
+      <g class="text-group-wrapper">
+        <text class="exp-text-base" x="110" y="55"><tspan class="exp-word">Explical</tspan><tspan class="exp-ia">ia</tspan></text>
+      </g>
+      <text x="115" y="85" class="exp-system">System</text>
+    </svg>
+  </footer>
+</div>
+
+<!-- SCREEN: GAME -->
+<div id="screen-game" class="screen">
+  <header class="game-header">
+    <div class="header-branding-container">
+      <svg class="exp-branding-logo exp-animado" viewBox="0 0 380 100" aria-label="Explicalia System">
+        <g transform="translate(0, 5)"><path class="icon-path" d="M 10 15 L 50 35 L 90 15 L 90 30 L 58 46 L 58 60 L 42 60 L 42 46 L 10 30 Z"/><path class="icon-path" d="M 10 50 L 50 70 L 90 50 L 90 65 L 50 85 L 10 65 Z"/></g>
+        <g class="text-group-wrapper"><text class="exp-text-base" x="110" y="55"><tspan class="exp-word">Explical</tspan><tspan class="exp-ia">ia</tspan></text></g>
+        <text x="115" y="85" class="exp-system">System</text>
+      </svg>
+      <span class="brand-tagline" data-i18n="tagline">"aprende jugando"</span>
+    </div>
+  </header>
+  <div style="width: 100%; max-width: 450px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; margin-top: 4px; padding-top: 8px;">
+    <button style="background:none;border:none;font-size:2rem;color:var(--exp-gold);cursor:pointer; padding: 0 10px;" onclick="goBackFromGame()">‹</button>
+    <div style="display: flex; align-items: center;">
+      <div style="font-weight:900; color:#fff; font-size: 1.3rem;" id="game-title">Canción</div>
+      <div class="equalizer" id="band-equalizer"><div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div></div>
+    </div>
+    <div style="width:40px;"></div>
+  </div>
+  <div id="wrapper-top" class="piano-wrapper-anim" style="width:100%; max-width: 450px;">
+    <div class="sofi-tip" style="margin-top: 0; margin-bottom: 12px;">🎓 <b data-i18n="maestroName">Maestro IAExplicalia</b>: <span data-i18n="maestroTipGame">Domina el Tramo A para pasar al B. Luego únelos para la obra completa de 60s.</span></div>
+    <div class="tramo-selector" id="tramo-selector">
+      <button class="tramo-btn active" onclick="selectTramo(1)" data-i18n="segmentA">Tramo A</button>
+      <button class="tramo-btn" onclick="selectTramo(2)" data-i18n="segmentAB">Tramos A+B</button>
+      <button class="tramo-btn" onclick="selectTramo(3)" data-i18n="segmentFull">Completa</button>
+    </div>
+    <div class="music-modes" id="modeSelectors">
+      <button class="mode-btn active" onclick="setMode('tutorial')" id="btn-mode-tutorial" data-i18n="modeLearn">Aprender</button>
+      <button class="mode-btn" onclick="setMode('practice')" id="btn-mode-practice" data-i18n="modeListen">Escuchar</button>
+    </div>
+    <div class="playback-controls" id="playback-controls">
+      <div style="width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+        <button class="ctrl-btn" onclick="stopPlayback()" style="background: rgba(255,69,58,0.1); color: var(--exp-error); border-radius: 12px; font-size: 1.2rem; padding: 0 15px; width: auto; height: 35px; border: none; cursor: pointer;" data-i18n="stop">⏹ Parar</button>
+        <div style="display: flex; gap: 5px;">
+          <button class="speed-toggle active" id="speed-1" onclick="setSpeed(1)" data-i18n="speedReal">1x (Real)</button>
+          <button class="speed-toggle" id="speed-2" onclick="setSpeed(0.7)" data-i18n="speedSlow">0.7x (Lento)</button>
+        </div>
+      </div>
+      <div class="ctrl-row"><button class="play-tramo-btn" id="play-pause-btn" onclick="togglePlayback(false)" data-i18n="playSegment">▶ Escuchar Tramo</button></div>
+      <button class="btn-listen-all" onclick="togglePlayback(true)" data-i18n="playFull">🌟 Escuchar Obra Completa (60s)</button>
+    </div>
+    <div class="piano-container" id="pianoContainer"></div>
+    <div style="margin-top:16px; text-align:center; font-weight:800; font-size:1.1rem; color:var(--exp-gold);" id="game-feedback"><span class="user-name"></span>, ¡Sigue la luz dorada!</div>
+    <div style="display:flex; gap:8px; margin-top:12px; justify-content:center; flex-wrap: wrap; max-width: 350px;" id="song-progress-dots"></div>
+  </div>
+  <footer class="explicalia-footer">
+    <a href="https://www.explicalia.com" target="_blank" class="footer-web">www.explicalia.com</a>
+    <svg class="footer-logo-animado exp-animado" viewBox="0 0 380 100" aria-label="Explicalia">
+      <g transform="translate(0, 5)">
+        <path class="icon-path" d="M 10 15 L 50 35 L 90 15 L 90 30 L 58 46 L 58 60 L 42 60 L 42 46 L 10 30 Z"/>
+        <path class="icon-path" d="M 10 50 L 50 70 L 90 50 L 90 65 L 50 85 L 10 65 Z"/>
+      </g>
+      <g class="text-group-wrapper">
+        <text class="exp-text-base" x="110" y="55"><tspan class="exp-word">Explical</tspan><tspan class="exp-ia">ia</tspan></text>
+      </g>
+      <text x="115" y="85" class="exp-system">System</text>
+    </svg>
+  </footer>
+</div>
+
+<!-- MODAL DE FELICITACIÓN CON BRANDING COMPLETO -->
+<div class="theory-modal" id="theoryModal">
+  <div class="theory-modal-wrapper">
+    <!-- HEADER DEL MODAL -->
+    <header class="theory-modal-header">
+      <div class="theory-header-branding">
+        <svg class="theory-logo-animado exp-animado" viewBox="0 0 380 100" aria-label="Explicalia System">
+          <g transform="translate(0, 5)">
+            <path class="icon-path" d="M 10 15 L 50 35 L 90 15 L 90 30 L 58 46 L 58 60 L 42 60 L 42 46 L 10 30 Z"/>
+            <path class="icon-path" d="M 10 50 L 50 70 L 90 50 L 90 65 L 50 85 L 10 65 Z"/>
+          </g>
+          <g class="text-group-wrapper">
+            <text class="exp-text-base" x="110" y="55"><tspan class="exp-word">Explical</tspan><tspan class="exp-ia">ia</tspan></text>
+          </g>
+          <text x="115" y="85" class="exp-system">System</text>
+        </svg>
+        <span class="theory-tagline" data-i18n="tagline">"aprende jugando"</span>
+      </div>
+    </header>
+    
+    <!-- CONTENIDO PRINCIPAL -->
+    <div class="theory-content">
+      <div class="theory-icon">🎓</div>
+      <h2 id="theory-title" data-i18n="excellent">¡Excelente!</h2>
+      
+      <!-- Mensaje del Maestro IA -->
+      <div class="theory-message">
+        <div class="theory-message-author">
+          <div class="author-avatar">🤖</div>
+          <span class="author-name" data-i18n="maestroName">Maestro IAExplicalia</span>
+        </div>
+        <p class="theory-message-text" id="theory-message-text">¡Increíble! Tus dedos están empezando a tener cerebro propio.</p>
+      </div>
+      
+      <!-- Estadísticas -->
+      <div class="theory-stats">
+        <div class="theory-stat">
+          <div class="theory-stat-value" id="theory-accuracy">100%</div>
+          <div class="theory-stat-label" data-i18n="accuracy">Precisión</div>
+        </div>
+        <div class="theory-stat">
+          <div class="theory-stat-value" id="theory-errors">0</div>
+          <div class="theory-stat-label" data-i18n="errors">Errores</div>
+        </div>
+        <div class="theory-stat">
+          <div class="theory-stat-value" id="theory-streak">🔥</div>
+          <div class="theory-stat-label" data-i18n="streak">Racha</div>
+        </div>
+      </div>
+      
+      <!-- Dato teórico -->
+      <div class="theory-fact">
+        <strong data-i18n="musicalFact">Dato Musical</strong>
+        <span id="theory-fact-text">Has tocado la escala de Do Mayor sin alteraciones.</span>
+      </div>
+      
+      <div class="theory-stars" id="theory-stars">⭐⭐⭐</div>
+      <button class="btn-theory" onclick="closeTheoryModal()" data-i18n="nextSong">¡A por la siguiente!</button>
+    </div>
+    
+    <!-- FOOTER DEL MODAL -->
+    <footer class="theory-modal-footer">
+      <a href="https://www.explicalia.com" target="_blank" class="theory-footer-web">www.explicalia.com</a>
+      <svg class="theory-footer-logo exp-animado" viewBox="0 0 100 95" aria-label="Explicalia">
+        <g transform="scale(0.85) translate(8, 5)">
+          <path class="icon-path" d="M 10 15 L 50 35 L 90 15 L 90 30 L 58 46 L 58 60 L 42 60 L 42 46 L 10 30 Z"/>
+          <path class="icon-path" d="M 10 50 L 50 70 L 90 50 L 90 65 L 50 85 L 10 65 Z"/>
+        </g>
+      </svg>
+    </footer>
+  </div>
+</div>
+
+<!-- JAVASCRIPT CONSOLIDADO Y CORREGIDO -->
+<script>
+// ==========================================
+// VARIABLES GLOBALES
+// ==========================================
+let playerName = ''; 
+let previousScreen = 'lessons';
+let currentLang = localStorage.getItem('explicalia-lang') || 'es';
+
+const PIANO_NOTES = [
+  {id:'DO',label:'Do',freq:261.63},
+  {id:'RE',label:'Re',freq:293.66},
+  {id:'MI',label:'Mi',freq:329.63},
+  {id:'FA',label:'Fa',freq:349.23},
+  {id:'SOL',label:'Sol',freq:392.00},
+  {id:'LA',label:'La',freq:440.00},
+  {id:'SI',label:'Si',freq:493.88},
+  {id:'DO2',label:'Do',freq:523.25}
+];
+
+const MELODIES = {
+  twinkle: {
+    id:'twinkle',icon:'⭐',name:'Estrellita',bpm:120,difficulty:1,rhythm:'pop',
+    hint:'Has tocado la escala de Do Mayor sin alteraciones.',
+    tramos:{
+      1:['DO:1','DO:1','SOL:1','SOL:1','LA:1','LA:1','SOL:2','FA:1','FA:1','MI:1','MI:1','RE:1','RE:1','DO:2'],
+      2:['SOL:1','SOL:1','FA:1','FA:1','MI:1','MI:1','RE:2','SOL:1','SOL:1','FA:1','FA:1','MI:1','MI:1','RE:2'],
+      3:['DO:1','DO:1','SOL:1','SOL:1','LA:1','LA:1','SOL:2','FA:1','FA:1','MI:1','MI:1','RE:1','RE:1','DO:2']
+    }
+  },
+  lobitos: {
+    id:'lobitos',icon:'🐺',name:'Cinco Lobitos',bpm:130,difficulty:1,rhythm:'waltz',
+    hint:'El compás de 3/4 da la sensación de acunar.',
+    tramos:{
+      1:['DO:1','DO:1','DO:1','RE:1','MI:1','MI:1','MI:1','FA:1','SOL:1','SOL:1','SOL:1','FA:1','MI:1','MI:1','MI:2'],
+      2:['DO:1','DO:1','DO:1','RE:1','MI:1','MI:1','MI:1','FA:1','SOL:1','SOL:1','SOL:1','FA:1','MI:1','MI:1','MI:2'],
+      3:['SOL:1','SOL:1','FA:1','FA:1','MI:1','MI:1','RE:2','DO:1','DO:1','RE:1','RE:1','DO:4']
+    }
+  },
+  patio: {
+    id:'patio',icon:'🏡',name:'El Patio de mi Casa',bpm:140,difficulty:2,rhythm:'pop',
+    hint:'Muy rítmica, perfecta para tocar en banda con percusión.',
+    tramos:{
+      1:['SOL:1','SOL:1','MI:1','FA:1','SOL:1','SOL:1','SOL:2','FA:1','FA:1','RE:1','MI:1','FA:1','FA:1','FA:2'],
+      2:['SOL:1','SOL:1','MI:1','FA:1','SOL:1','SOL:1','SOL:2','FA:1','FA:1','RE:1','MI:1','FA:1','FA:1','FA:2'],
+      3:['MI:1','FA:1','SOL:2','FA:1','MI:1','RE:2','DO:1','RE:1','MI:1','FA:1','SOL:2','DO:2']
+    }
+  },
+  cumple: {
+    id:'cumple',icon:'🎂',name:'Cumpleaños Feliz',bpm:130,difficulty:2,rhythm:'waltz',
+    hint:'Introduce saltos de octava y ritmo de vals.',
+    tramos:{
+      1:['DO:0.5','DO:0.5','RE:1','DO:1','FA:1','MI:2','DO:0.5','DO:0.5','RE:1','DO:1','SOL:1','FA:2'],
+      2:['DO:0.5','DO:0.5','DO2:1','LA:1','FA:1','MI:1','RE:1'],
+      3:['LA:0.5','LA:0.5','FA:1','SOL:1','FA:2']
+    }
+  },
+  cucaracha: {
+    id:'cucaracha',icon:'🪲',name:'La Cucaracha',bpm:140,difficulty:3,rhythm:'march',
+    hint:'Marcha alegre muy reconocible. Rápida y divertida.',
+    tramos:{
+      1:['DO:0.5','DO:0.5','DO:0.5','FA:1','LA:2','DO:0.5','DO:0.5','DO:0.5','FA:1','LA:2'],
+      2:['FA:1','FA:1','MI:1','MI:1','RE:1','RE:1','DO:2','DO:0.5','DO:0.5','DO:0.5','MI:1','SOL:2'],
+      3:['DO:0.5','DO:0.5','DO:0.5','MI:1','SOL:2','DO2:1','DO2:1','LA:1','SOL:1','FA:1','FA:1','FA:2']
+    }
+  },
+  boladrac: {
+    id:'boladrac',icon:'🐉',name:'Bola de Drac',bpm:135,difficulty:3,rhythm:'pop',
+    hint:'¡Anem a buscar les boles del drac! Épica y rítmica.',
+    tramos:{
+      1:['DO:1','FA:0.5','FA:0.5','FA:0.5','FA:1','FA:0.5','MI:0.5','FA:0.5','SOL:2'],
+      2:['DO:1','SOL:0.5','SOL:0.5','SOL:0.5','SOL:1','FA:0.5','SOL:0.5','LA:2'],
+      3:['LA:0.5','SI:0.5','DO2:1','LA:1','FA:1','SOL:1','MI:1','DO:1','FA:2']
+    }
+  }
+};
+
+let progress = {totalNotesPlayed:0,songStars:{},streak:0,lastPlayDate:null};
+let currentGame={songKey:null,mode:'tutorial',tramoLevel:1,sequence:[],currentStep:0,errors:0,isBand:false};
+let playback={isPlaying:false,timeoutId:null,currentBeatIndex:0,playFull:false,speed:1};
+let audioCtx,masterGain,compressor;
+
+// ==========================================
+// SISTEMA DE INTERNACIONALIZACIÓN (i18n)
+// ==========================================
+const TRANSLATIONS = {
+  es: {
+    appTitle: "La música de SofiNoa",
+    welcomeSubtitle: "Descubre el músico que llevas dentro.",
+    namePlaceholder: "¿Cómo te llamas?",
+    startButton: "¡A Tocar!",
+    maestroTipWelcome: "Introduce tu nombre para guardar tus logros mágicamente.",
+    selectLanguage: "Idioma",
+    hello: "Hola",
+    howToLearn: "¿Cómo te gustaría aprender hoy?",
+    maestroTipMenu: "Si es tu primera vez, elige el Modo Solo Piano para calentar los dedos.",
+    soloPiano: "Modo Solo Piano",
+    soloPianoDesc: "Concéntrate en la melodía a tu ritmo.",
+    bandMode: "Concierto en Banda",
+    bandModeDesc: "Toca con acompañamiento orquestal.",
+    soloPianoTitle: "Solo Piano",
+    bandTitle: "Banda",
+    maestroTipCatalog: "Empieza por las canciones de 1 estrella. ¡Son muy fáciles!",
+    maestroTipBand: "Toca el piano mientras la Inteligencia Musical crea acordes para ti.",
+    difficulty: "Dificultad",
+    segmentA: "Tramo A",
+    segmentAB: "Tramos A+B",
+    segmentFull: "Completa",
+    modeLearn: "Aprender",
+    modeListen: "Escuchar",
+    stop: "⏹ Parar",
+    speedReal: "1x (Real)",
+    speedSlow: "0.7x (Lento)",
+    playSegment: "▶ Escuchar Tramo",
+    pauseSegment: "⏸ Pausar Tramo",
+    playFull: "🌟 Escuchar Obra Completa (60s)",
+    paused: "Pausado",
+    yourTurn: "¡Te toca",
+    followLight: "¡Sigue la luz dorada!",
+    selectListen: "Selecciona tu opción de Escucha.",
+    maestroTipGame: "Domina el Tramo A para pasar al B. Luego únelos para la obra completa de 60s.",
+    listeningFull: "Escuchando Obra Completa...",
+    listeningSegment: "Escuchando el tramo seleccionado...",
+    achievements: "Logros de",
+    yourCollection: "Tu Colección",
+    stars: "Estrellas",
+    songs: "Canciones",
+    streak: "Días racha",
+    notes: "Notas",
+    noAchievements: "¡Completa canciones para desbloquear logros!",
+    excellent: "¡Excelente",
+    veryGood: "¡Muy bien",
+    goodTry: "¡Buen intento",
+    musicalFact: "Dato Musical",
+    accuracy: "Precisión",
+    errors: "Errores",
+    nextSong: "¡A por la siguiente!",
+    home: "Inicio",
+    piano: "Piano",
+    band: "Banda",
+    achievementsTab: "Logros",
+    tagline: "aprende jugando",
+    maestroName: "Maestro IAExplicalia"
+  },
+  en: {
+    appTitle: "SofiNoa's Music",
+    welcomeSubtitle: "Discover the musician within you.",
+    namePlaceholder: "What's your name?",
+    startButton: "Let's Play!",
+    maestroTipWelcome: "Enter your name to magically save your achievements.",
+    selectLanguage: "Language",
+    hello: "Hello",
+    howToLearn: "How would you like to learn today?",
+    maestroTipMenu: "If it's your first time, choose Solo Piano Mode to warm up your fingers.",
+    soloPiano: "Solo Piano Mode",
+    soloPianoDesc: "Focus on the melody at your own pace.",
+    bandMode: "Band Concert",
+    bandModeDesc: "Play with orchestral accompaniment.",
+    soloPianoTitle: "Solo Piano",
+    bandTitle: "Band",
+    maestroTipCatalog: "Start with 1-star songs. They're very easy!",
+    maestroTipBand: "Play the piano while the Musical Intelligence creates chords for you.",
+    difficulty: "Difficulty",
+    segmentA: "Segment A",
+    segmentAB: "Segments A+B",
+    segmentFull: "Full Song",
+    modeLearn: "Learn",
+    modeListen: "Listen",
+    stop: "⏹ Stop",
+    speedReal: "1x (Real)",
+    speedSlow: "0.7x (Slow)",
+    playSegment: "▶ Listen Segment",
+    pauseSegment: "⏸ Pause Segment",
+    playFull: "🌟 Listen Full Song (60s)",
+    paused: "Paused",
+    yourTurn: "Your turn",
+    followLight: "Follow the golden light!",
+    selectListen: "Select your listening option.",
+    maestroTipGame: "Master Segment A to move to B. Then combine them for the full 60s piece.",
+    listeningFull: "Listening Full Song...",
+    listeningSegment: "Listening selected segment...",
+    achievements: "Achievements of",
+    yourCollection: "Your Collection",
+    stars: "Stars",
+    songs: "Songs",
+    streak: "Day streak",
+    notes: "Notes",
+    noAchievements: "Complete songs to unlock achievements!",
+    excellent: "Excellent",
+    veryGood: "Very good",
+    goodTry: "Good try",
+    musicalFact: "Musical Fact",
+    accuracy: "Accuracy",
+    errors: "Errors",
+    nextSong: "On to the next one!",
+    home: "Home",
+    piano: "Piano",
+    band: "Band",
+    achievementsTab: "Achievements",
+    tagline: "learn by playing",
+    maestroName: "Master IAExplicalia"
+  },
+  ro: {
+    appTitle: "Muzica SofiNoa",
+    welcomeSubtitle: "Descoperă muzicianul din tine.",
+    namePlaceholder: "Cum te cheamă?",
+    startButton: "Să jucăm!",
+    maestroTipWelcome: "Introdu numele tău pentru a-ți salva realizările magic.",
+    selectLanguage: "Limbă",
+    hello: "Salut",
+    howToLearn: "Cum ai vrea să înveți astăzi?",
+    maestroTipMenu: "Dacă e prima dată, alege Modul Pian Solo pentru a-ți încălzi degetele.",
+    soloPiano: "Mod Pian Solo",
+    soloPianoDesc: "Concentrează-te pe melodie în ritmul tău.",
+    bandMode: "Concert de Bandă",
+    bandModeDesc: "Cântă cu acompaniament orchestral.",
+    soloPianoTitle: "Pian Solo",
+    bandTitle: "Bandă",
+    maestroTipCatalog: "Începe cu cântecele de 1 stea. Sunt foarte ușoare!",
+    maestroTipBand: "Cântă la pian în timp ce Inteligența Muzicală creează acorduri pentru tine.",
+    difficulty: "Dificultate",
+    segmentA: "Segmentul A",
+    segmentAB: "Segmentele A+B",
+    segmentFull: "Cântec Complet",
+    modeLearn: "Învață",
+    modeListen: "Ascultă",
+    stop: "⏹ Oprește",
+    speedReal: "1x (Real)",
+    speedSlow: "0.7x (Lent)",
+    playSegment: "▶ Ascultă Segmentul",
+    pauseSegment: "⏸ Pauză Segment",
+    playFull: "🌟 Ascultă Cântecul Complet (60s)",
+    paused: "Pauză",
+    yourTurn: "Rândul tău",
+    followLight: "Urmărește lumina aurie!",
+    selectListen: "Selectează opțiunea de ascultare.",
+    maestroTipGame: "Stăpânește Segmentul A pentru a trece la B. Apoi combină-le pentru piesa completă de 60s.",
+    listeningFull: "Se ascultă Cântecul Complet...",
+    listeningSegment: "Se ascultă segmentul selectat...",
+    achievements: "Realizările lui",
+    yourCollection: "Colecția Ta",
+    stars: "Stele",
+    songs: "Cântece",
+    streak: "Zile consecutive",
+    notes: "Note",
+    noAchievements: "Completează cântece pentru a debloca realizări!",
+    excellent: "Excelent",
+    veryGood: "Foarte bine",
+    goodTry: "Încercare bună",
+    musicalFact: "Fapt Muzical",
+    accuracy: "Precizie",
+    errors: "Erori",
+    nextSong: "La următorul!",
+    home: "Acasă",
+    piano: "Pian",
+    band: "Bandă",
+    achievementsTab: "Realizări",
+    tagline: "învață jucând",
+    maestroName: "Maestru IAExplicalia"
+  },
+  fr: {
+    appTitle: "La Musique de SofiNoa",
+    welcomeSubtitle: "Découvre le musicien qui est en toi.",
+    namePlaceholder: "Comment t'appelles-tu?",
+    startButton: "Jouons!",
+    maestroTipWelcome: "Entre ton nom pour sauvegarder tes accomplissements magiquement.",
+    selectLanguage: "Langue",
+    hello: "Salut",
+    howToLearn: "Comment aimerais-tu apprendre aujourd'hui?",
+    maestroTipMenu: "Si c'est ta première fois, choisis le Mode Piano Solo pour échauffer tes doigts.",
+    soloPiano: "Mode Piano Solo",
+    soloPianoDesc: "Concentre-toi sur la mélodie à ton rythme.",
+    bandMode: "Concert de Groupe",
+    bandModeDesc: "Joue avec accompagnement orchestral.",
+    soloPianoTitle: "Piano Solo",
+    bandTitle: "Groupe",
+    maestroTipCatalog: "Commence par les chansons à 1 étoile. Elles sont très faciles!",
+    maestroTipBand: "Joue du piano pendant que l'Intelligence Musicale crée des accords pour toi.",
+    difficulty: "Difficulté",
+    segmentA: "Segment A",
+    segmentAB: "Segments A+B",
+    segmentFull: "Chanson Complète",
+    modeLearn: "Apprendre",
+    modeListen: "Écouter",
+    stop: "⏹ Arrêter",
+    speedReal: "1x (Réel)",
+    speedSlow: "0.7x (Lent)",
+    playSegment: "▶ Écouter Segment",
+    pauseSegment: "⏸ Pause Segment",
+    playFull: "🌟 Écouter Chanson Complète (60s)",
+    paused: "En pause",
+    yourTurn: "À toi de jouer",
+    followLight: "Suis la lumière dorée!",
+    selectListen: "Sélectionne ton option d'écoute.",
+    maestroTipGame: "Maîtrise le Segment A pour passer au B. Puis combine-les pour la pièce complète de 60s.",
+    listeningFull: "Écoute de la Chanson Complète...",
+    listeningSegment: "Écoute du segment sélectionné...",
+    achievements: "Accomplissements de",
+    yourCollection: "Ta Collection",
+    stars: "Étoiles",
+    songs: "Chansons",
+    streak: "Jours consécutifs",
+    notes: "Notes",
+    noAchievements: "Complète des chansons pour débloquer des accomplissements!",
+    excellent: "Excellent",
+    veryGood: "Très bien",
+    goodTry: "Bonne tentative",
+    musicalFact: "Fait Musical",
+    accuracy: "Précision",
+    errors: "Erreurs",
+    nextSong: "Au suivant!",
+    home: "Accueil",
+    piano: "Piano",
+    band: "Groupe",
+    achievementsTab: "Accomplissements",
+    tagline: "apprends en jouant",
+    maestroName: "Maître IAExplicalia"
+  },
+  ca: {
+    appTitle: "La Música de SofiNoa",
+    welcomeSubtitle: "Descobreix el músic que portes dins.",
+    namePlaceholder: "Com et dius?",
+    startButton: "A tocar!",
+    maestroTipWelcome: "Introdueix el teu nom per guardar els teus èxits màgicament.",
+    selectLanguage: "Idioma",
+    hello: "Hola",
+    howToLearn: "Com t'agradaria aprendre avui?",
+    maestroTipMenu: "Si és el teu primer cop, tria el Mode Piano Sol per escalfar els dits.",
+    soloPiano: "Mode Piano Sol",
+    soloPianoDesc: "Concentra't en la melodia al teu ritme.",
+    bandMode: "Concert de Banda",
+    bandModeDesc: "Toca amb acompanyament orquestral.",
+    soloPianoTitle: "Piano Sol",
+    bandTitle: "Banda",
+    maestroTipCatalog: "Comença per les cançons d'1 estrella. Són molt fàcils!",
+    maestroTipBand: "Toca el piano mentre la Intel·ligència Musical crea acords per a tu.",
+    difficulty: "Dificultat",
+    segmentA: "Tram A",
+    segmentAB: "Trams A+B",
+    segmentFull: "Cançó Completa",
+    modeLearn: "Aprendre",
+    modeListen: "Escoltar",
+    stop: "⏹ Aturar",
+    speedReal: "1x (Real)",
+    speedSlow: "0.7x (Lent)",
+    playSegment: "▶ Escoltar Tram",
+    pauseSegment: "⏸ Pausar Tram",
+    playFull: "🌟 Escoltar Cançó Completa (60s)",
+    paused: "Pausat",
+    yourTurn: "Et toca a tu",
+    followLight: "Segueix la llum daurada!",
+    selectListen: "Selecciona la teva opció d'escolta.",
+    maestroTipGame: "Domina el Tram A per passar al B. Després uneix-los per a la peça completa de 60s.",
+    listeningFull: "Escoltant Cançó Completa...",
+    listeningSegment: "Escoltant el tram seleccionat...",
+    achievements: "Èxits de",
+    yourCollection: "La Teva Col·lecció",
+    stars: "Estrelles",
+    songs: "Cançons",
+    streak: "Dies consecutius",
+    notes: "Notes",
+    noAchievements: "Completa cançons per desbloquejar èxits!",
+    excellent: "Excel·lent",
+    veryGood: "Molt bé",
+    goodTry: "Bona temptativa",
+    musicalFact: "Fet Musical",
+    accuracy: "Precisió",
+    errors: "Errors",
+    nextSong: "A la següent!",
+    home: "Inici",
+    piano: "Piano",
+    band: "Banda",
+    achievementsTab: "Èxits",
+    tagline: "aprèn jugant",
+    maestroName: "Mestre IAExplicalia"
+  }
+};
+
+// Mensajes del Maestro IA por nivel de estrellas - 30 mensajes x 5 idiomas
+const MAESTRO_MESSAGES_ALL = {
+  es: {
+    perfect: [
+      "¿Ves? No era tan difícil... hasta un piano podría hacerlo. 🎹",
+      "¡Increíble! Tus dedos están empezando a tener cerebro propio. 🧠",
+      "¿Eres tú, Mozart? Porque esto suena a genialidad pura. ✨",
+      "¡Perfecto! Beethoven estaría celoso... y un poco sordo. 🎵",
+      "¿Has estado practicando en secreto? No me mientas, lo sé todo. 🤖",
+      "Tus dedos bailan mejor que mis algoritmos. Y eso es mucho decir. 💃",
+      "¡Brillante! Incluso las estrellas están aplaudiendo. ⭐",
+      "Esto no es música, esto es magia con notas. 🪄",
+      "¡Increíble! El piano ya te considera su amigo. 🤝",
+      "¿Seguro que no eres un prodigio disfrazado? 🎭"
+    ],
+    good: [
+      "¡Bien hecho! Solo unos cuantos errores... los paso por alto esta vez. 😉",
+      "¡Notable! Estás a punto de dejar de hacer sufrir a ese piano. 🎹",
+      "¡Buen trabajo! Con un poco más de práctica, hasta podrías tocar en una fiesta. 🎉",
+      "¡Eso es! Los errores son solo notas que aún no has conquistado. 🎯",
+      "¡Vas por buen camino! El piano ya no te odia tanto. 💛",
+      "¡Bien! Estás construyendo tu camino hacia la maestría. 🛤️",
+      "¡Buen intento! La práctica hace al maestro, y tú estás en ello. 📈",
+      "¡Nice! Cada error es una oportunidad disfrazada. 🎁",
+      "¡Sigue así! Tu progreso es visible y constante. 📊",
+      "¡Bien jugado! El ritmo está en tus manos. 🥁"
+    ],
+    improvable: [
+      "Bueno... al menos lo intentaste. Eso cuenta, ¿verdad? 🤷",
+      "¡No te rindas! Incluso Beethoven empezó con 'Für Elise'... bueno, no exactamente. 🎼",
+      "Los errores son parte del aprendizaje. Muchos errores, pero parte del aprendizaje. 📚",
+      "¡Ánimo! El piano es difícil, pero tú eres más terco que él. 💪",
+      "¿Sabías que los mejores músicos también se equivocaron? Mucho. Muchísimo. 🎭",
+      "No pasa nada, el piano te perdona... por ahora. 😏",
+      "¡Cabeza arriba! La próxima vez será mejor. O eso dice la estadística. 📉",
+      "Romeo no se construyó en un día, ni tampoco un pianista. 🏛️",
+      "¡Persiste! Cada intento te acerca a la perfección. 🎯",
+      "No te preocupes, hasta los genios tienen días malos. 🌧️"
+    ]
+  },
+  en: {
+    perfect: [
+      "See? It wasn't that hard... even a piano could do it. 🎹",
+      "Incredible! Your fingers are starting to have their own brain. 🧠",
+      "Is that you, Mozart? Because this sounds like pure genius. ✨",
+      "Perfect! Beethoven would be jealous... and a bit deaf. 🎵",
+      "Have you been practicing in secret? Don't lie to me, I know everything. 🤖",
+      "Your fingers dance better than my algorithms. And that's saying something. 💃",
+      "Brilliant! Even the stars are applauding. ⭐",
+      "This isn't music, this is magic with notes. 🪄",
+      "Incredible! The piano already considers you its friend. 🤝",
+      "Are you sure you're not a prodigy in disguise? 🎭"
+    ],
+    good: [
+      "Well done! Just a few errors... I'll overlook them this time. 😉",
+      "Notable! You're about to stop making that piano suffer. 🎹",
+      "Good job! With a bit more practice, you could even play at a party. 🎉",
+      "That's it! Errors are just notes you haven't conquered yet. 🎯",
+      "You're on the right track! The piano doesn't hate you as much now. 💛",
+      "Good! You're building your path to mastery. 🛤️",
+      "Good try! Practice makes perfect, and you're on it. 📈",
+      "Nice! Every error is an opportunity in disguise. 🎁",
+      "Keep it up! Your progress is visible and constant. 📊",
+      "Well played! The rhythm is in your hands. 🥁"
+    ],
+    improvable: [
+      "Well... at least you tried. That counts, right? 🤷",
+      "Don't give up! Even Beethoven started with 'Für Elise'... well, not exactly. 🎼",
+      "Errors are part of learning. Many errors, but part of learning. 📚",
+      "Cheer up! The piano is hard, but you're more stubborn than it. 💪",
+      "Did you know the best musicians also made mistakes? A lot. A whole lot. 🎭",
+      "It's okay, the piano forgives you... for now. 😏",
+      "Chin up! Next time will be better. Or so says statistics. 📉",
+      "Rome wasn't built in a day, neither was a pianist. 🏛️",
+      "Persist! Every attempt brings you closer to perfection. 🎯",
+      "Don't worry, even geniuses have bad days. 🌧️"
+    ]
+  },
+  ro: {
+    perfect: [
+      "Vezi? Nu a fost atât de greu... chiar și un pian ar putea face asta. 🎹",
+      "Incredibil! Degetele tale încep să aibă propriul creier. 🧠",
+      "Ești tu, Mozart? Pentru că asta sună a geniu pur. ✨",
+      "Perfect! Beethoven ar fi gelos... și puțin surd. 🎵",
+      "Ai exersat în secret? Nu mă minți, știu totul. 🤖",
+      "Degetele tale dansează mai bine decât algoritmii mei. Și asta spune multe. 💃",
+      "Brilliant! Chiar și stelele aplaudă. ⭐",
+      "Asta nu e muzică, asta e magie cu note. 🪄",
+      "Incredibil! Pianul te consideră deja prietenul său. 🤝",
+      "Ești sigur că nu ești un prodigiu deghizat? 🎭"
+    ],
+    good: [
+      "Bine făcut! Doar câteva erori... le trec cu vederea de data asta. 😉",
+      "Notabil! Ești pe punctul de a înceta să faci pianul să sufere. 🎹",
+      "Bună treabă! Cu puțin mai multă practică, ai putea chiar cânta la o petrecere. 🎉",
+      "Asta e! Erorile sunt doar note pe care nu le-ai cucerit încă. 🎯",
+      "Ești pe drumul cel bun! Pianul nu te mai urăște atât de mult acum. 💛",
+      "Bine! Îți construiești calea spre măiestrie. 🛤️",
+      "Încercare bună! Practica face perfecțiunea, și tu ești pe treabă. 📈",
+      "Nice! Fiecare eroare este o oportunitate deghizată. 🎁",
+      "Continuă așa! Progresul tău este vizibil și constant. 📊",
+      "Bine jucat! Ritmul este în mâinile tale. 🥁"
+    ],
+    improvable: [
+      "Ei bine... cel puțin ai încercat. Asta contează, nu? 🤷",
+      "Nu renunța! Chiar și Beethoven a început cu 'Für Elise'... ei bine, nu exact. 🎼",
+      "Erorile fac parte din învățare. Multe erori, dar parte din învățare. 📚",
+      "Înveselește-te! Pianul este greu, dar tu ești mai încăpățânat decât el. 💪",
+      "Știai că și cei mai buni muzicieni au greșit? Mult. Foarte mult. 🎭",
+      "E în regulă, pianul te iartă... deocamdată. 😏",
+      "Capul sus! Data viitoare va fi mai bine. Sau așa spune statistica. 📉",
+      "Roma nu a fost construită într-o zi, nici un pianist. 🏛️",
+      "Persistă! Fiecare încercare te aduce mai aproape de perfecțiune. 🎯",
+      "Nu-ți face griji, chiar și geniile au zile proaste. 🌧️"
+    ]
+  },
+  fr: {
+    perfect: [
+      "Tu vois? Ce n'était pas si difficile... même un piano pourrait le faire. 🎹",
+      "Incroyable! Tes doigts commencent à avoir leur propre cerveau. 🧠",
+      "C'est toi, Mozart? Parce que ça sonne comme du pur génie. ✨",
+      "Parfait! Beethoven serait jaloux... et un peu sourd. 🎵",
+      "Tu as pratiqué en secret? Ne me mens pas, je sais tout. 🤖",
+      "Tes doigts dansent mieux que mes algorithmes. Et ça veut dire quelque chose. 💃",
+      "Brillant! Même les étoiles applaudissent. ⭐",
+      "Ce n'est pas de la musique, c'est de la magie avec des notes. 🪄",
+      "Incroyable! Le piano te considère déjà comme son ami. 🤝",
+      "Tu es sûr que tu n'es pas un prodige déguisé? 🎭"
+    ],
+    good: [
+      "Bien joué! Juste quelques erreurs... je les passerai sous silence cette fois. 😉",
+      "Notable! Tu es sur le point d'arrêter de faire souffrir ce piano. 🎹",
+      "Bon travail! Avec un peu plus de pratique, tu pourrais même jouer à une fête. 🎉",
+      "C'est ça! Les erreurs sont juste des notes que tu n'as pas encore conquises. 🎯",
+      "Tu es sur la bonne voie! Le piano ne te déteste plus autant maintenant. 💛",
+      "Bien! Tu construis ton chemin vers la maîtrise. 🛤️",
+      "Bonne tentative! La pratique rend parfait, et tu es dessus. 📈",
+      "Nice! Chaque erreur est une opportunité déguisée. 🎁",
+      "Continue comme ça! Ton progrès est visible et constant. 📊",
+      "Bien joué! Le rythme est entre tes mains. 🥁"
+    ],
+    improvable: [
+      "Bon... au moins tu as essayé. Ça compte, non? 🤷",
+      "N'abandonne pas! Même Beethoven a commencé avec 'Für Elise'... enfin, pas exactement. 🎼",
+      "Les erreurs font partie de l'apprentissage. Beaucoup d'erreurs, mais partie de l'apprentissage. 📚",
+      "Courage! Le piano est difficile, mais tu es plus têtu que lui. 💪",
+      "Savais-tu que les meilleurs musiciens ont aussi fait des erreurs? Beaucoup. Beaucoup beaucoup. 🎭",
+      "Ça va, le piano te pardonne... pour l'instant. 😏",
+      "La tête haute! La prochaine fois sera meilleure. Ou c'est ce que dit la statistique. 📉",
+      "Rome ne s'est pas construite en un jour, ni un pianiste. 🏛️",
+      "Persévère! Chaque tentative te rapproche de la perfection. 🎯",
+      "Ne t'inquiète pas, même les génies ont des mauvais jours. 🌧️"
+    ]
+  },
+  ca: {
+    perfect: [
+      "Vols? No era tan difícil... fins i tot un piano podria fer-ho. 🎹",
+      "Increïble! Els teus dits estan començant a tenir cervell propi. 🧠",
+      "Ets tu, Mozart? Perquè això sona a genialitat pura. ✨",
+      "Perfecte! Beethoven estaria gelós... i una mica sord. 🎵",
+      "Has estat practicant en secret? No m'enganyis, ho sé tot. 🤖",
+      "Els teus dits ballen millor que els meus algoritmes. I això és molt dir. 💃",
+      "Brillant! Fins i tot les estrelles estan aplaudint. ⭐",
+      "Això no és música, això és màgia amb notes. 🪄",
+      "Increïble! El piano ja et considera el seu amic. 🤝",
+      "Estàs segur que no ets un prodigi disfressat? 🎭"
+    ],
+    good: [
+      "Ben fet! Només uns quants errors... els passo per alt aquest cop. 😉",
+      "Notable! Estàs a punt de deixar de fer patir aquest piano. 🎹",
+      "Bona feina! Amb una mica més de pràctica, fins i tot podries tocar en una festa. 🎉",
+      "Això és! Els errors són només notes que encara no has conquerit. 🎯",
+      "Vas pel bon camí! El piano ja no t'odia tant ara. 💛",
+      "Bé! Estàs construint el teu camí cap a la mestria. 🛤️",
+      "Bona temptativa! La pràctica fa la perfecció, i tu hi ets. 📈",
+      "Nice! Cada error és una oportunitat disfressada. 🎁",
+      "Segueix així! El teu progrés és visible i constant. 📊",
+      "Ben jugat! El ritme és a les teves mans. 🥁"
+    ],
+    improvable: [
+      "Bé... almenys ho has intentat. Això compta, oi? 🤷",
+      "No et rendeixis! Fins i tot Beethoven va començar amb 'Für Elise'... bé, no exactament. 🎼",
+      "Els errors són part de l'aprenentatge. Molts errors, però part de l'aprenentatge. 📚",
+      "Ànims! El piano és difícil, però tu ets més tossut que ell. 💪",
+      "Sabies que els millors músics també es van equivocar? Molt. Moltíssim. 🎭",
+      "No passa res, el piano et perdona... de moment. 😏",
+      "Cap amunt! La propera vegada serà millor. O això diu l'estadística. 📉",
+      "Roma no es va construir en un dia, tampoc un pianista. 🏛️",
+      "Persisteix! Cada intent t'acosta a la perfecció. 🎯",
+      "No et preocupis, fins i tot els genis tenen dies dolents. 🌧️"
+    ]
+  }
+};
+
+// Función de traducción
+function t(key) {
+  return TRANSLATIONS[currentLang]?.[key] || TRANSLATIONS['es'][key];
+}
+
+// Función para cambiar idioma
+function setLanguage(lang) {
+  currentLang = lang;
+  localStorage.setItem('explicalia-lang', lang);
+  
+  // Actualizar clase activa en botones de idioma
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+  });
+  
+  updateAllTexts();
+}
+
+// Actualizar todos los textos de la UI
+function updateAllTexts() {
+  // Actualizar textos con data-i18n
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (el.tagName === 'INPUT') {
+      el.placeholder = t(key);
+    } else {
+      const translation = t(key);
+      if (translation && translation.includes('<')) {
+        el.innerHTML = translation;
+      } else {
+        el.textContent = translation;
+      }
+    }
+  });
+  
+  // Actualizar placeholders con data-i18n-placeholder
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    el.placeholder = t(key);
+  });
+  
+  // Actualizar título
+  document.title = t('appTitle') + ' · Explicalia System';
+}
+
+// Sistema anti-repetición de mensajes del Maestro IA
+function getMaestroMessage(stars, errors) {
+  let category = 'improvable';
+  if (stars === 3) category = 'perfect';
+  else if (stars === 2) category = 'good';
+  
+  const messages = MAESTRO_MESSAGES_ALL[currentLang][category];
+  const usedKey = 'maestroUsed_' + currentLang + '_' + category;
+  
+  let usedMessages = JSON.parse(localStorage.getItem(usedKey) || '[]');
+  
+  if (usedMessages.length >= messages.length) {
+    usedMessages = [];
+  }
+  
+  const availableMessages = messages.filter((_, index) => !usedMessages.includes(index));
+  const selectedIndex = Math.floor(Math.random() * availableMessages.length);
+  const selectedMessage = availableMessages[selectedIndex];
+  const originalIndex = messages.indexOf(selectedMessage);
+  
+  usedMessages.push(originalIndex);
+  localStorage.setItem(usedKey, JSON.stringify(usedMessages));
+  
+  return selectedMessage;
+}
+
+// ==========================================
+// FUNCIONES DE AUDIO
+// ==========================================
+function initAudio(){
+  if(!audioCtx){
+    audioCtx=new(window.AudioContext||window.webkitAudioContext)();
+    compressor=audioCtx.createDynamicsCompressor();
+    compressor.threshold.setValueAtTime(-20,audioCtx.currentTime);
+    compressor.ratio.setValueAtTime(4,audioCtx.currentTime);
+    masterGain=audioCtx.createGain();
+    masterGain.gain.value=2.5;
+    compressor.connect(masterGain);
+    masterGain.connect(audioCtx.destination);
+  }
+  if(audioCtx.state==='suspended')audioCtx.resume();
+}
+
+function playTone(freq,duration=0.5,vol=1.0){
+  if(!audioCtx)initAudio();
+  const time=audioCtx.currentTime;
+  const osc1=audioCtx.createOscillator();
+  const gain1=audioCtx.createGain();
+  osc1.type='sine';
+  osc1.frequency.value=freq;
+  gain1.gain.setValueAtTime(vol,time);
+  gain1.gain.exponentialRampToValueAtTime(0.001,time+duration);
+  const osc2=audioCtx.createOscillator();
+  const gain2=audioCtx.createGain();
+  osc2.type='triangle';
+  osc2.frequency.value=freq;
+  gain2.gain.setValueAtTime(vol*0.8,time);
+  gain2.gain.exponentialRampToValueAtTime(0.001,time+(duration*0.3));
+  osc1.connect(gain1);
+  gain1.connect(compressor);
+  osc2.connect(gain2);
+  gain2.connect(compressor);
+  osc1.start(time);
+  osc1.stop(time+duration);
+  osc2.start(time);
+  osc2.stop(time+duration);
+}
+
+function playKick(){
+  if(!audioCtx)initAudio();
+  const time=audioCtx.currentTime;
+  const osc=audioCtx.createOscillator();
+  const gain=audioCtx.createGain();
+  osc.connect(gain);
+  gain.connect(compressor);
+  osc.frequency.setValueAtTime(150,time);
+  osc.frequency.exponentialRampToValueAtTime(0.01,time+0.3);
+  gain.gain.setValueAtTime(1.8,time);
+  gain.gain.exponentialRampToValueAtTime(0.01,time+0.3);
+  osc.start(time);
+  osc.stop(time+0.3);
+}
+
+function playSnare(){
+  if(!audioCtx)initAudio();
+  const time=audioCtx.currentTime;
+  const bufferSize=audioCtx.sampleRate*0.2;
+  const buffer=audioCtx.createBuffer(1,bufferSize,audioCtx.sampleRate);
+  const data=buffer.getChannelData(0);
+  for(let i=0;i<bufferSize;i++)data[i]=Math.random()*2-1;
+  const noise=audioCtx.createBufferSource();
+  noise.buffer=buffer;
+  const filter=audioCtx.createBiquadFilter();
+  filter.type='highpass';
+  filter.frequency.value=1000;
+  const gain=audioCtx.createGain();
+  gain.gain.setValueAtTime(1.0,time);
+  gain.gain.exponentialRampToValueAtTime(0.01,time+0.2);
+  noise.connect(filter);
+  filter.connect(gain);
+  gain.connect(compressor);
+  noise.start(time);
+}
+
+function playHiHat(){
+  if(!audioCtx)initAudio();
+  const time=audioCtx.currentTime;
+  const bufferSize=audioCtx.sampleRate*0.1;
+  const buffer=audioCtx.createBuffer(1,bufferSize,audioCtx.sampleRate);
+  const data=buffer.getChannelData(0);
+  for(let i=0;i<bufferSize;i++)data[i]=Math.random()*2-1;
+  const noise=audioCtx.createBufferSource();
+  noise.buffer=buffer;
+  const filter=audioCtx.createBiquadFilter();
+  filter.type='highpass';
+  filter.frequency.value=5000;
+  const gain=audioCtx.createGain();
+  gain.gain.setValueAtTime(0.6,time);
+  gain.gain.exponentialRampToValueAtTime(0.01,time+0.1);
+  noise.connect(filter);
+  filter.connect(gain);
+  gain.connect(compressor);
+  noise.start(time);
+}
+
+function playBass(noteId,duration){
+  const noteObj=PIANO_NOTES.find(n=>n.id===noteId);
+  if(!noteObj)return;
+  const time=audioCtx.currentTime;
+  const osc=audioCtx.createOscillator();
+  const gain=audioCtx.createGain();
+  osc.frequency.setValueAtTime(noteObj.freq/4,time);
+  osc.type='sawtooth';
+  const filter=audioCtx.createBiquadFilter();
+  filter.type='lowpass';
+  filter.frequency.setValueAtTime(300,time);
+  filter.frequency.exponentialRampToValueAtTime(50,time+duration);
+  gain.gain.setValueAtTime(1.8,time);
+  gain.gain.exponentialRampToValueAtTime(0.01,time+duration);
+  osc.connect(filter);
+  filter.connect(gain);
+  gain.connect(compressor);
+  osc.start(time);
+  osc.stop(time+duration);
+}
+
+function playPowerChord(noteId,duration){
+  const index=PIANO_NOTES.findIndex(n=>n.id===noteId);
+  if(index===-1)return;
+  const fifthIndex=(index+4)%PIANO_NOTES.length;
+  const time=audioCtx.currentTime;
+  [index,fifthIndex].forEach(idx=>{
+    const osc=audioCtx.createOscillator();
+    const gain=audioCtx.createGain();
+    osc.frequency.setValueAtTime(PIANO_NOTES[idx].freq/2,time);
+    osc.type='triangle';
+    gain.gain.setValueAtTime(0.5,time);
+    gain.gain.exponentialRampToValueAtTime(0.001,time+duration);
+    osc.connect(gain);
+    gain.connect(compressor);
+    osc.start(time);
+    osc.stop(time+duration);
+  });
+}
+
+function playNavSound(){playTone(400,0.1,0.2);}
+function playPopSound(){playTone(600,0.15,0.3);}
+function playDing(){playTone(880,0.3,0.8);setTimeout(()=>playTone(1760,0.3,0.8),100);}
+function playBuzz(){
+  if(!audioCtx)initAudio();
+  const osc=audioCtx.createOscillator();
+  const gain=audioCtx.createGain();
+  osc.type='sawtooth';
+  osc.frequency.setValueAtTime(150,audioCtx.currentTime);
+  gain.gain.setValueAtTime(0.5,audioCtx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(0.001,audioCtx.currentTime+0.3);
+  osc.connect(gain);
+  gain.connect(compressor);
+  osc.start();
+  osc.stop(audioCtx.currentTime+0.3);
+}
+function playApplause(){playSnare();setTimeout(playSnare,100);setTimeout(playSnare,200);}
+
+// ==========================================
+// FEEDBACK TÁCTIL
+// ==========================================
+function haptic(type){
+  if(!navigator.vibrate)return;
+  if(type==='light')navigator.vibrate(15);
+  else if(type==='error')navigator.vibrate([30,50,30]);
+  else if(type==='success')navigator.vibrate([20,30,40]);
+}
+
+// ==========================================
+// GESTIÓN DE PROGRESO Y LOGROS
+// ==========================================
+function loadProgress(){
+  const saved=localStorage.getItem('sofiNoaProg');
+  if(saved)progress=JSON.parse(saved);
+  const today=new Date().toISOString().split('T')[0];
+  if(progress.lastPlayDate!==today){
+    if(progress.lastPlayDate){
+      const last=new Date(progress.lastPlayDate);
+      const curr=new Date(today);
+      const diffDays=Math.ceil(Math.abs(curr-last)/(1000*60*60*24));
+      if(diffDays===1)progress.streak++;
+      else progress.streak=1;
+    }else{
+      progress.streak=1;
+    }
+    progress.lastPlayDate=today;
+    saveProgress();
+  }
+}
+
+function saveProgress(){
+  localStorage.setItem('sofiNoaProg',JSON.stringify(progress));
+  updateHomeUI();
+}
+
+function updateHomeUI(){
+  const streakEl=document.getElementById('streakCount');
+  const starsEl=document.getElementById('totalStars');
+  if(streakEl)streakEl.textContent=progress.streak;
+  if(starsEl)starsEl.textContent=Object.values(progress.songStars).reduce((a,b)=>a+b,0);
+}
+
+function renderBadges(){
+  const badgesGrid=document.getElementById('badgesGrid');
+  if(!badgesGrid)return;
+  badgesGrid.innerHTML='';
+  const totalStars=Object.values(progress.songStars).reduce((a,b)=>a+b,0);
+  const songsCompleted=Object.keys(progress.songStars).length;
+  
+  // Badge: Estrellas totales
+  if(totalStars>0){
+    badgesGrid.innerHTML+=`
+      <div class="badge-item" style="background:linear-gradient(135deg,rgba(212,175,55,0.2),rgba(212,175,55,0.1));border:1px solid rgba(212,175,55,0.4);border-radius:16px;padding:16px 20px;text-align:center;min-width:100px;">
+        <div style="font-size:2rem;margin-bottom:6px;">⭐</div>
+        <div style="font-size:1.4rem;font-weight:800;color:var(--exp-gold);">${totalStars}</div>
+        <div style="font-size:0.75rem;color:var(--exp-text-muted);text-transform:uppercase;letter-spacing:1px;">${t('stars')}</div>
+      </div>
+    `;
+  }
+  
+  // Badge: Canciones completadas
+  if(songsCompleted>0){
+    badgesGrid.innerHTML+=`
+      <div class="badge-item" style="background:linear-gradient(135deg,rgba(50,215,75,0.2),rgba(50,215,75,0.1));border:1px solid rgba(50,215,75,0.4);border-radius:16px;padding:16px 20px;text-align:center;min-width:100px;">
+        <div style="font-size:2rem;margin-bottom:6px;">🎵</div>
+        <div style="font-size:1.4rem;font-weight:800;color:var(--exp-success);">${songsCompleted}</div>
+        <div style="font-size:0.75rem;color:var(--exp-text-muted);text-transform:uppercase;letter-spacing:1px;">${t('songs')}</div>
+      </div>
+    `;
+  }
+  
+  // Badge: Racha de días
+  if(progress.streak>0){
+    badgesGrid.innerHTML+=`
+      <div class="badge-item" style="background:linear-gradient(135deg,rgba(255,69,58,0.2),rgba(255,69,58,0.1));border:1px solid rgba(255,69,58,0.4);border-radius:16px;padding:16px 20px;text-align:center;min-width:100px;">
+        <div style="font-size:2rem;margin-bottom:6px;">🔥</div>
+        <div style="font-size:1.4rem;font-weight:800;color:var(--exp-error);">${progress.streak}</div>
+        <div style="font-size:0.75rem;color:var(--exp-text-muted);text-transform:uppercase;letter-spacing:1px;">${t('streak')}</div>
+      </div>
+    `;
+  }
+  
+  // Badge: Notas tocadas
+  if(progress.totalNotesPlayed>0){
+    badgesGrid.innerHTML+=`
+      <div class="badge-item" style="background:linear-gradient(135deg,rgba(100,80,200,0.2),rgba(100,80,200,0.1));border:1px solid rgba(100,80,200,0.4);border-radius:16px;padding:16px 20px;text-align:center;min-width:100px;">
+        <div style="font-size:2rem;margin-bottom:6px;">🎹</div>
+        <div style="font-size:1.4rem;font-weight:800;color:#a080ff;">${progress.totalNotesPlayed}</div>
+        <div style="font-size:0.75rem;color:var(--exp-text-muted);text-transform:uppercase;letter-spacing:1px;">${t('notes')}</div>
+      </div>
+    `;
+  }
+  
+  if(badgesGrid.innerHTML===''){
+    badgesGrid.innerHTML=`<div style="color:var(--exp-text-muted);text-align:center;padding:30px 20px;"><div style="font-size:3rem;margin-bottom:10px;">🏆</div><p>${t('noAchievements')}</p></div>`;
+  }
+}
+
+// ==========================================
+// NAVEGACIÓN Y UI
+// ==========================================
+function checkNameInput(){
+  const val=document.getElementById('name-input').value.trim();
+  if(val.length>1){
+    document.getElementById('start-btn').classList.add('ready');
+  }else{
+    document.getElementById('start-btn').classList.remove('ready');
+  }
+}
+
+function startGame(){
+  const val=document.getElementById('name-input').value.trim();
+  if(val.length>1){
+    playPopSound();
+    playerName=val;
+    localStorage.setItem('sofiNoaName',playerName);
+    injectName();
+    document.getElementById('tab-bar').style.display='flex';
+    navTo('home');
+    initAudio();
+  }
+}
+
+function injectName(){
+  document.querySelectorAll('.user-name').forEach(el=>el.textContent=playerName);
+}
+
+function navTo(tab){
+  initAudio();
+  stopPlayback();
+  playNavSound();
+  haptic('light');
+  document.querySelectorAll('.screen').forEach(s=>{
+    s.style.display='none';
+    s.classList.remove('active');
+  });
+  document.querySelectorAll('.tab-item').forEach(t=>t.classList.remove('active'));
+  
+  const target=document.getElementById('screen-'+tab);
+  if(target){
+    target.style.display='flex';
+    setTimeout(()=>{target.classList.add('active');},10);
+  }
+  
+  if(tab==='home'){
+    document.querySelectorAll('.tab-item')[0].classList.add('active');
+    updateHomeUI();
+  }else if(tab==='lessons'){
+    document.querySelectorAll('.tab-item')[1].classList.add('active');
+    renderCatalog('solo');
+  }else if(tab==='band'){
+    document.querySelectorAll('.tab-item')[2].classList.add('active');
+    renderCatalog('band');
+  }else if(tab==='progress'){
+    document.querySelectorAll('.tab-item')[3].classList.add('active');
+    renderBadges();
+  }
+}
+
+function goBackFromGame(){
+  stopPlayback();
+  navTo(previousScreen);
+}
+
+function renderCatalog(mode){
+  const isBandMode=mode==='band';
+  const gridId=isBandMode?'bandCatalogGrid':'songCatalogGrid';
+  const grid=document.getElementById(gridId);
+  if(!grid)return;
+  
+  grid.innerHTML='';
+  Object.values(MELODIES).forEach((song)=>{
+    const earnedStars=progress.songStars[song.id]||0;
+    const starsHtml=earnedStars>0?
+      `<div class="song-diff">${'★'.repeat(earnedStars)}${'☆'.repeat(3-earnedStars)}</div>`:
+      `<div class="song-diff" style="color:#666;">${t('difficulty')}: ${'★'.repeat(song.difficulty)}</div>`;
+    
+    grid.innerHTML+=`
+      <div class="song-card ${isBandMode?'band-mode':''}" onclick="startSong('${song.id}',${isBandMode})">
+        <div class="song-icon">${song.icon}</div>
+        <div class="song-info">
+          <div class="song-title">${song.name}</div>
+          ${starsHtml}
+        </div>
+        <div style="color:var(--exp-gold);font-size:1.5rem;opacity:0.6;">›</div>
+      </div>
+    `;
+  });
+}
+
+function renderPiano(){
+  const container=document.getElementById('pianoContainer');
+  if(!container)return;
+  container.innerHTML='';
+  PIANO_NOTES.forEach((note)=>{
+    const key=document.createElement('button');
+    key.className='piano-key';
+    key.id=`key-${note.id}`;
+    key.innerHTML=`<span class="note-label">${note.label}</span>`;
+    const pressFn=(e)=>{
+      e.preventDefault();
+      handleUserKeyPress(note.id);
+    };
+    key.addEventListener('mousedown',pressFn);
+    key.addEventListener('touchstart',pressFn,{passive:false});
+    container.appendChild(key);
+  });
+}
+
+// ==========================================
+// LÓGICA DEL JUEGO
+// ==========================================
+function setSpeed(val){
+  playback.speed=val;
+  const speed1=document.getElementById('speed-1');
+  const speed2=document.getElementById('speed-2');
+  if(speed1)speed1.classList.toggle('active',val===1);
+  if(speed2)speed2.classList.toggle('active',val===0.7);
+  playNavSound();
+}
+
+function startSong(songKey,isBandMode){
+  playPopSound();
+  previousScreen=isBandMode?'band':'lessons';
+  currentGame.songKey=songKey;
+  currentGame.isBand=isBandMode;
+  setSpeed(1);
+  
+  const gameTitle=document.getElementById('game-title');
+  if(gameTitle)gameTitle.textContent=MELODIES[songKey].name;
+  
+  const eq=document.getElementById('band-equalizer');
+  if(eq){
+    if(isBandMode)eq.classList.add('active');
+    else eq.classList.remove('active');
+  }
+  
+  renderPiano();
+  selectTramo(1);
+  setMode('tutorial');
+  navTo('game');
+}
+
+function selectTramo(level){
+  playNavSound();
+  haptic('light');
+  stopPlayback();
+  currentGame.tramoLevel=level;
+  const songData=MELODIES[currentGame.songKey].tramos;
+  if(level===1)currentGame.sequence=[...songData[1]];
+  else if(level===2)currentGame.sequence=[...songData[1],...songData[2]];
+  else if(level===3)currentGame.sequence=[...songData[1],...songData[2],...songData[3]];
+  
+  document.querySelectorAll('.tramo-btn').forEach((b,i)=>{
+    if(i===level-1)b.classList.add('active');
+    else b.classList.remove('active');
+  });
+  
+  if(currentGame.mode==='tutorial'){
+    currentGame.currentStep=0;
+    currentGame.errors=0;
+    showHint();
+    renderDots();
+  }
+}
+
+function setMode(mode){
+  playNavSound();
+  haptic('light');
+  stopPlayback();
+  currentGame.mode=mode;
+  
+  document.querySelectorAll('.mode-btn').forEach(b=>b.classList.remove('active'));
+  const btnMode=document.getElementById(`btn-mode-${mode}`);
+  if(btnMode)btnMode.classList.add('active');
+  
+  document.querySelectorAll('.piano-key').forEach(k=>k.classList.remove('hint','pressed'));
+  currentGame.currentStep=0;
+  currentGame.errors=0;
+  
+  const ctrlPanel=document.getElementById('playback-controls');
+  const pianoWrapper=document.getElementById('wrapper-top');
+  const feedback=document.getElementById('game-feedback');
+  const dots=document.getElementById('song-progress-dots');
+  
+  if(mode==='tutorial'){
+    if(ctrlPanel)ctrlPanel.classList.remove('active');
+    if(pianoWrapper)pianoWrapper.classList.remove('focus-mode');
+    if(feedback)feedback.innerHTML=`${t('yourTurn')}, <span class="user-name">${playerName}</span>! ${t('followLight')}`;
+    showHint();
+    renderDots();
+  }else if(mode==='practice'){
+    if(ctrlPanel)ctrlPanel.classList.add('active');
+    if(pianoWrapper)pianoWrapper.classList.add('focus-mode');
+    if(feedback)feedback.innerHTML=t('selectListen');
+    if(dots)dots.innerHTML='';
+  }
+}
+
+function renderDots(){
+  const cont=document.getElementById('song-progress-dots');
+  if(!cont)return;
+  cont.innerHTML='';
+  const dotsToShow=Math.min(currentGame.sequence.length-currentGame.currentStep,15);
+  for(let i=0;i<dotsToShow;i++){
+    cont.innerHTML+=`<div style="width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.2);"></div>`;
+  }
+}
+
+function showHint(){
+  if(currentGame.currentStep>=currentGame.sequence.length)return;
+  const noteData=currentGame.sequence[currentGame.currentStep].split(':');
+  const expected=noteData[0];
+  document.querySelectorAll('.piano-key').forEach(k=>k.classList.remove('hint'));
+  const keyEl=document.getElementById(`key-${expected}`);
+  if(keyEl)keyEl.classList.add('hint');
+}
+
+function handleUserKeyPress(keyId){
+  if(currentGame.mode==='practice')return;
+  const noteObj=PIANO_NOTES.find(n=>n.id===keyId);
+  if(!noteObj)return;
+  playTone(noteObj.freq,0.5,1.2);
+  const keyEl=document.getElementById(`key-${keyId}`);
+  if(keyEl){
+    keyEl.classList.add('pressed');
+    setTimeout(()=>keyEl.classList.remove('pressed'),150);
+  }
+  
+  if(currentGame.mode==='tutorial'){
+    const noteData=currentGame.sequence[currentGame.currentStep].split(':');
+    const expected=noteData[0];
+    const duration=parseFloat(noteData[1]||1);
+    
+    if(keyId===expected){
+      if(currentGame.isBand){
+        playBass(keyId,duration*0.5);
+        const rhythm=MELODIES[currentGame.songKey].rhythm;
+        if(rhythm==='waltz'){
+          if(currentGame.currentStep%3===0){playKick();playPowerChord(keyId,duration*0.4);}
+          else{playSnare();playHiHat();}
+        }else if(rhythm==='march'){
+          if(currentGame.currentStep%2===0){playKick();playHiHat();playPowerChord(keyId,duration*0.4);}
+          else{playSnare();playHiHat();}
+        }else{
+          if(currentGame.currentStep%4===0){playKick();playHiHat();playPowerChord(keyId,duration*0.4);}
+          else if(currentGame.currentStep%4===2){playSnare();playHiHat();playPowerChord(keyId,duration*0.4);}
+          else{playHiHat();}
+        }
+      }
+      if(keyEl){
+        keyEl.classList.add('flash-green');
+        setTimeout(()=>keyEl.classList.remove('flash-green'),400);
+      }
+      const dots=document.querySelectorAll('#song-progress-dots div');
+      if(dots.length>0)dots[0].style.background='var(--exp-gold)';
+      currentGame.currentStep++;
+      if(currentGame.currentStep%15===0)setTimeout(renderDots,300);
+      if(currentGame.currentStep>=currentGame.sequence.length)finishSong();
+      else showHint();
+    }else{
+      playBuzz();
+      currentGame.errors++;
+      if(keyEl){
+        keyEl.classList.add('flash-red');
+        setTimeout(()=>keyEl.classList.remove('flash-red'),400);
+      }
+    }
+  }
+}
+
+function togglePlayback(playFull){
+  playPopSound();
+  if(playback.isPlaying&&playback.playFull===playFull){
+    pausePlayback();
+  }else{
+    playback.playFull=playFull;
+    startPlayback();
+  }
+}
+
+function startPlayback(){
+  initAudio();
+  playback.isPlaying=true;
+  const btn=document.getElementById('play-pause-btn');
+  if(btn)btn.innerHTML=`⏸ ${t('pauseSegment')}`;
+  
+  const feedback=document.getElementById('game-feedback');
+  if(playback.playFull){
+    if(feedback)feedback.innerHTML=t('listeningFull');
+    const songData=MELODIES[currentGame.songKey].tramos;
+    playback.sequence=[...songData[1],...songData[2],...songData[3]];
+  }else{
+    if(feedback)feedback.innerHTML=t('listeningSegment');
+    playback.sequence=currentGame.sequence;
+  }
+  playback.currentBeatIndex=0;
+  playNextSequenceNote();
+}
+
+function pausePlayback(){
+  playback.isPlaying=false;
+  clearTimeout(playback.timeoutId);
+  const btn=document.getElementById('play-pause-btn');
+  if(btn)btn.innerHTML=`▶ ${t('playSegment')}`;
+  const feedback=document.getElementById('game-feedback');
+  if(feedback)feedback.innerHTML=t('paused');
+}
+
+function stopPlayback(){
+  playback.isPlaying=false;
+  playback.currentBeatIndex=0;
+  clearTimeout(playback.timeoutId);
+  const btn=document.getElementById('play-pause-btn');
+  if(btn)btn.innerHTML=`▶ ${t('playSegment')}`;
+  document.querySelectorAll('.piano-key').forEach(k=>k.classList.remove('pressed'));
+}
+
+function playNextSequenceNote(){
+  if(!playback.isPlaying)return;
+  if(playback.currentBeatIndex>=playback.sequence.length){
+    stopPlayback();
+    const feedback=document.getElementById('game-feedback');
+    if(feedback)feedback.innerHTML=`${t('yourTurn')}, <span class="user-name">${playerName}</span>!`;
+    return;
+  }
+  
+  const song=MELODIES[currentGame.songKey];
+  const noteData=playback.sequence[playback.currentBeatIndex].split(':');
+  const noteId=noteData[0];
+  const beats=parseFloat(noteData[1]||1);
+  const msPerBeat=(60000/song.bpm)/playback.speed;
+  const durationMs=beats*msPerBeat;
+  
+  const noteObj=PIANO_NOTES.find(n=>n.id===noteId);
+  if(noteObj){
+    playTone(noteObj.freq,durationMs/1000*0.8,1.2);
+    const keyEl=document.getElementById(`key-${noteId}`);
+    if(keyEl){
+      keyEl.classList.add('pressed');
+      setTimeout(()=>keyEl.classList.remove('pressed'),durationMs*0.5);
+    }
+  }
+  
+  if(currentGame.isBand){
+    playBass(noteId,(durationMs/1000)*0.5);
+    if(song.rhythm==='waltz'){
+      if(playback.currentBeatIndex%3===0){playKick();playPowerChord(noteId,(durationMs/1000)*0.4);}
+      else{playSnare();playHiHat();}
+    }else if(song.rhythm==='march'){
+      if(playback.currentBeatIndex%2===0){playKick();playHiHat();playPowerChord(noteId,(durationMs/1000)*0.4);}
+      else{playSnare();playHiHat();}
+    }else{
+      if(playback.currentBeatIndex%4===0){playKick();playHiHat();playPowerChord(noteId,(durationMs/1000)*0.4);}
+      else if(playback.currentBeatIndex%4===2){playSnare();playHiHat();playPowerChord(noteId,(durationMs/1000)*0.4);}
+      else{playHiHat();}
+    }
+  }
+  
+  playback.currentBeatIndex++;
+  playback.timeoutId=setTimeout(playNextSequenceNote,durationMs);
+}
+
+function finishSong(){
+  document.querySelectorAll('.piano-key').forEach(k=>k.classList.remove('hint'));
+  playApplause();
+  playDing();
+  haptic('success');
+  
+  let stars=1;
+  if(currentGame.errors<=3)stars=3;
+  else if(currentGame.errors<=8)stars=2;
+  
+  progress.totalNotesPlayed+=currentGame.sequence.length;
+  const currentStars=progress.songStars[currentGame.songKey]||0;
+  if(stars>currentStars){
+    progress.songStars[currentGame.songKey]=stars;
+  }
+  saveProgress();
+  
+  const totalNotes=currentGame.sequence.length;
+  const accuracy=Math.round(((totalNotes-currentGame.errors)/totalNotes)*100);
+  
+  const titleKey=stars===3?'excellent':stars===2?'veryGood':'goodTry';
+  const titleEl=document.getElementById('theory-title');
+  if(titleEl)titleEl.textContent=`${t(titleKey)}, ${playerName}!`;
+  
+  const msgEl=document.getElementById('theory-message-text');
+  if(msgEl)msgEl.textContent=getMaestroMessage(stars,currentGame.errors);
+  
+  const accEl=document.getElementById('theory-accuracy');
+  if(accEl)accEl.textContent=accuracy+'%';
+  
+  const errEl=document.getElementById('theory-errors');
+  if(errEl)errEl.textContent=currentGame.errors;
+  
+  const streakEl=document.getElementById('theory-streak');
+  if(streakEl)streakEl.textContent=progress.streak>1?'🔥 '+progress.streak:'🔥';
+  
+  const factEl=document.getElementById('theory-fact-text');
+  if(factEl)factEl.textContent=MELODIES[currentGame.songKey].hint;
+  
+  const starsEl=document.getElementById('theory-stars');
+  if(starsEl)starsEl.textContent='⭐'.repeat(stars)+'☆'.repeat(3-stars);
+  
+  const modal=document.getElementById('theoryModal');
+  if(modal)modal.classList.add('active');
+}
+
+function closeTheoryModal(){
+  playNavSound();
+  const modal=document.getElementById('theoryModal');
+  if(modal)modal.classList.remove('active');
+  goBackFromGame();
+}
+
+// ==========================================
+// INICIALIZACIÓN
+// ==========================================
+function hideSplash(){
+  if(window.splashHidden)return;
+  window.splashHidden=true;
+  
+  const splash=document.getElementById('splash-screen');
+  splash.classList.add('hidden');
+  
+  // CORREGIDO: Navegación explícita a welcome para usuarios nuevos
+  if(playerName&&playerName.length>1){
+    injectName();
+    const tabBar=document.getElementById('tab-bar');
+    if(tabBar)tabBar.style.display='flex';
+    setTimeout(()=>{
+      splash.style.display='none';
+      navTo('home');
+    },100);
+  }else{
+    setTimeout(()=>{
+      splash.style.display='none';
+      navTo('welcome');  // ✅ CORRECCIÓN: Navegar a welcome explícitamente
+    },800);
+  }
+}
+
+// ==========================================
+// EVENT LISTENERS Y STARTUP
+// ==========================================
+document.addEventListener('DOMContentLoaded',()=>{
+  // Cargar progreso y nombre
+  loadProgress();
+  playerName=localStorage.getItem('sofiNoaName')||'';
+  
+  // Splash: 4 segundos
+  const splash=document.getElementById('splash-screen');
+  setTimeout(hideSplash,4000);
+  splash.addEventListener('click',hideSplash);
+  
+  // Header scroll effect
+  const header=document.querySelector('.game-header');
+  if(header){
+    window.addEventListener('scroll',()=>{
+      header.classList.toggle('scrolled',window.scrollY>20);
+    },{passive:true});
+  }
+  
+  // Intersection Observer para logos en footers
+  const footerObserver=new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      const footer=entry.target;
+      const logo=footer.querySelector('.footer-logo-animado,.theory-footer-logo');
+      if(entry.isIntersecting&&logo&&!footer.classList.contains('animated')){
+        logo.classList.remove('exp-animado');
+        void logo.offsetWidth;
+        logo.classList.add('exp-animado');
+        footer.classList.add('animated');
+      }
+    });
+  },{threshold:0.2});
+  
+  document.querySelectorAll('.explicalia-footer,.theory-modal-footer').forEach(footer=>{
+    footerObserver.observe(footer);
+  });
+  
+  // Inicializar idioma
+  document.querySelectorAll('.lang-btn').forEach(btn=>{
+    btn.classList.toggle('active',btn.getAttribute('data-lang')===currentLang);
+  });
+  updateAllTexts();
+  
+  // Si hay nombre guardado, preparar UI
+  if(playerName&&document.getElementById('name-input')){
+    document.getElementById('name-input').value=playerName;
+    checkNameInput();
+  }
+});
+
+window.onload=()=>{
+  if(playerName&&document.getElementById('name-input')){
+    document.getElementById('name-input').value=playerName;
+    checkNameInput();
+  }
+  updateAllTexts();
+};
+</script>
+
+</body>
+</html>
