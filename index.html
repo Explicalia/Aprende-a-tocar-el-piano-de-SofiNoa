@@ -52,6 +52,9 @@
   /* Animaciones */
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --brand-reveal-ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --brand-reveal-dur: 0.82s;
+  --brand-text-dur: 0.8s;
   
   /* Radios */
   --radius-sm: 8px;
@@ -387,15 +390,16 @@ body, html {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 48px 32px;
+  padding: 52px 36px;
   max-width: 440px;
+  gap: 4px;
   opacity: 0;
-  animation: splashHero 1.2s var(--ease-spring) 0.15s forwards;
+  animation: splashHero 1.1s var(--brand-reveal-ease) 0.15s forwards;
 }
 
 @keyframes splashHero {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
+  from { opacity: 0; transform: translateY(8px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 /* Unidad corporativa: logo + eslogan alineados y justificados */
@@ -447,9 +451,9 @@ body, html {
 .splash-web:hover { color: var(--exp-gold-light); text-shadow: 0 0 16px rgba(212,175,55,0.5); }
 
 .splash-cta-wrap {
-  margin-top: 32px;
+  margin-top: 40px;
   opacity: 0;
-  animation: splashCta 0.9s cubic-bezier(0.32, 0.72, 0, 1) 1s forwards;
+  animation: splashCta 0.9s var(--brand-reveal-ease) 1s forwards;
 }
 /* Paso 3: micro-animacion segura solo fuera de safe-mode */
 html:not(.safe-mode) #splash-screen.micro-anim .splash-content {
@@ -531,6 +535,9 @@ html.safe-mode.balanced-mode .theory-modal-wrapper {
   border-color: var(--exp-gold);
   box-shadow: var(--brand-shadow-strong);
   background: var(--brand-surface-hover);
+}
+#splash-screen .branding-cta:hover {
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.08) inset, 0 6px 24px rgba(0,0,0,0.3), 0 0 28px rgba(212,175,55,0.22);
 }
 #splash-screen:active .branding-cta { transform: scale(0.98); }
 .branding-cta-icon { font-size: 1rem; opacity: 0.95; color: var(--exp-gold); }
@@ -684,13 +691,13 @@ html:not(.safe-mode) #splash-screen.micro-anim .branding-cta-pulse {
 .game-header .exp-branding-logo {
   max-width: 158px;
   transition: max-width 0.4s cubic-bezier(0.32, 0.72, 0, 1);
-  animation: headerLogoReveal 0.6s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+  animation: headerLogoReveal var(--brand-reveal-dur) var(--brand-reveal-ease) forwards;
 }
 .game-header.scrolled .exp-branding-logo {
   max-width: 134px;
 }
 @keyframes headerLogoReveal {
-  from { opacity: 0.7; transform: scale(0.98); }
+  from { opacity: 0; transform: translateY(3px) scale(0.985); }
   to { opacity: 1; transform: scale(1); }
 }
 
@@ -704,7 +711,7 @@ html:not(.safe-mode) #splash-screen.micro-anim .branding-cta-pulse {
   letter-spacing: 1px;
   opacity: 0;
   white-space: nowrap;
-  animation: taglineReveal 0.9s cubic-bezier(0.32, 0.72, 0, 1) 0.3s forwards;
+  animation: taglineReveal 0.72s var(--brand-reveal-ease) 0.16s forwards;
   transition: color 0.25s ease;
 }
 .game-header:hover .brand-tagline { color: rgba(212, 175, 55, 0.7); }
@@ -716,8 +723,8 @@ html:not(.safe-mode) #splash-screen.micro-anim .branding-cta-pulse {
 }
 
 @keyframes taglineReveal {
-  from { opacity: 0; transform: translateX(-12px); }
-  to { opacity: 0.9; transform: translateX(0); }
+  from { opacity: 0; transform: translateX(8px); }
+  to { opacity: 0.92; transform: translateX(0); }
 }
 
 /* Botón atrás en cabecera (lessons, band, progress) */
@@ -985,6 +992,8 @@ html:not(.safe-mode) #splash-screen.micro-anim .branding-cta-pulse {
   overflow: hidden;
   animation: footerReveal 0.6s cubic-bezier(0.32, 0.72, 0, 1) forwards;
 }
+.footer-web { order: 1; }
+.footer-logo-animado { order: 2; margin-top: 6px; }
 .explicalia-footer::before {
   content: '';
   position: absolute;
@@ -994,7 +1003,7 @@ html:not(.safe-mode) #splash-screen.micro-anim .branding-cta-pulse {
   width: 0;
   height: 2px;
   background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.5), transparent);
-  animation: footerLineReveal 0.8s cubic-bezier(0.32, 0.72, 0, 1) 0.2s forwards;
+  animation: footerLineReveal 0.7s var(--brand-reveal-ease) 0.25s forwards;
 }
 .explicalia-footer::after {
   content: '';
@@ -1025,7 +1034,7 @@ html:not(.safe-mode) #splash-screen.micro-anim .branding-cta-pulse {
   transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.25s ease;
   display: inline-block;
   margin-bottom: 4px;
-  animation: footerWebReveal 0.5s cubic-bezier(0.32, 0.72, 0, 1) 0.3s both;
+  animation: footerWebReveal var(--brand-text-dur) var(--brand-reveal-ease) 0.2s both;
 }
 .footer-web::after {
   content: '';
@@ -1040,7 +1049,7 @@ html:not(.safe-mode) #splash-screen.micro-anim .branding-cta-pulse {
   transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
 }
 @keyframes footerWebReveal {
-  from { opacity: 0; transform: translateY(6px); }
+  from { opacity: 0; transform: translateY(3px); }
   to { opacity: 1; transform: translateY(0); }
 }
 .footer-web:hover {
@@ -1060,39 +1069,44 @@ html:not(.safe-mode) #splash-screen.micro-anim .branding-cta-pulse {
   cursor: pointer;
   filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.15));
   transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1), filter 0.35s ease;
-  animation: footerLogoReveal 0.6s cubic-bezier(0.32, 0.72, 0, 1) 0.4s both;
+  animation: footerLogoReveal var(--brand-reveal-dur) var(--brand-reveal-ease) forwards,
+             iconGlowPulse 0.5s ease 1.1s forwards;
 }
 .footer-logo-animado:hover {
   transform: scale(1.08);
   filter: drop-shadow(0 0 14px rgba(212, 175, 55, 0.35));
 }
 @keyframes footerLogoReveal {
-  from { opacity: 0; transform: scale(0.92) translateY(6px); }
+  from { opacity: 0; transform: translateY(3px) scale(0.985); }
   to { opacity: 1; transform: scale(1) translateY(0); }
 }
+@keyframes iconGlowPulse {
+  0%, 100% { filter: drop-shadow(0 0 10px rgba(212,175,55,0.15)); }
+  50% { filter: drop-shadow(0 0 16px rgba(212,175,55,0.28)); }
+}
 
-.footer-logo-animado .icon-path {
+.footer-logo-animado.exp-animado .icon-path {
   fill: transparent;
   stroke: var(--exp-gold);
   stroke-width: 1.5;
   stroke-dasharray: 400;
   stroke-dashoffset: 400;
-  animation: expDrawLine 1.3s cubic-bezier(0.32, 0.72, 0, 1) 0.2s forwards,
-             expFillSolid 0.6s ease-in 1.1s forwards;
+  animation: expDrawLine 1.05s var(--brand-reveal-ease) forwards,
+             expFillSolid 0.5s ease-in 0.82s forwards;
 }
 
-.footer-logo-animado .text-group-wrapper {
+.footer-logo-animado.exp-animado .text-group-wrapper {
   clip-path: inset(0 100% 0 0);
-  animation: expSweepReveal 1.2s cubic-bezier(0.32, 0.72, 0, 1) 0.6s forwards;
+  animation: expSweepReveal 0.9s var(--brand-reveal-ease) 0.24s forwards;
 }
 
-.footer-logo-animado .exp-system {
+.footer-logo-animado.exp-animado .exp-system {
   opacity: 0;
-  animation: expFadeIn 0.7s ease 1.6s forwards;
+  animation: expFadeIn 0.48s ease 0.86s forwards;
 }
 
 .footer-logo-animado:hover {
-  transform: scale(1.15);
+  transform: scale(1.06);
   filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.5));
 }
 
@@ -1133,13 +1147,13 @@ html:not(.safe-mode) #splash-screen.micro-anim .branding-cta-pulse {
   stroke-width: 1.5;
   stroke-dasharray: 400;
   stroke-dashoffset: 400;
-  animation: expDrawLine 1.2s var(--ease-smooth) forwards,
-             expFillSolid 0.6s ease-in 1s forwards;
+  animation: expDrawLine 1.05s var(--brand-reveal-ease) forwards,
+             expFillSolid 0.5s ease-in 0.82s forwards;
 }
 
 .exp-animado .text-group-wrapper {
   clip-path: inset(0 100% 0 0);
-  animation: expSweepReveal 1.2s var(--ease-smooth) 0.8s forwards;
+  animation: expSweepReveal 0.9s var(--brand-reveal-ease) 0.24s forwards;
 }
 
 .exp-animado .exp-system {
@@ -2695,6 +2709,47 @@ html.safe-mode body.brand-sweep-once .game-header .exp-branding-logo.exp-animado
   border-color: rgba(50,215,75,0.5);
   color: #dfffe7;
 }
+.quality-segment {
+  display: flex;
+  gap: 6px;
+  width: 100%;
+  padding: 4px;
+  border-radius: 12px;
+  border: 1px solid rgba(212,175,55,0.24);
+  background: rgba(255,255,255,0.03);
+}
+.quality-pill {
+  flex: 1;
+  border: 1px solid rgba(212,175,55,0.2);
+  background: rgba(255,255,255,0.03);
+  color: var(--exp-text-secondary);
+  border-radius: 10px;
+  padding: 9px 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+.quality-pill.active {
+  background: linear-gradient(180deg, rgba(212,175,55,0.22), rgba(212,175,55,0.1));
+  border-color: rgba(212,175,55,0.52);
+  color: #fff;
+}
+html.economy-mode .shooting-star,
+html.economy-mode .center-glow {
+  display: none !important;
+}
+html.economy-mode .space-bg::before,
+html.economy-mode .space-bg::after {
+  opacity: 0.5;
+}
+html.premium-mode .branding-cta {
+  box-shadow: var(--brand-shadow-strong);
+}
+html.premium-mode .game-header {
+  border-bottom-color: rgba(212,175,55,0.28);
+}
 
 #player-sheet-modal {
   position: fixed;
@@ -4248,7 +4303,11 @@ html.safe-mode body.brand-sweep-once .game-header .exp-branding-logo.exp-animado
     <div class="settings-actions">
       <button class="btn-secondary" id="btn-key-fx-toggle" onclick="toggleMechanicalKeyFx()">🔊 Sonido mecánico: ON</button>
       <button class="btn-secondary" id="btn-safe-mode-toggle" onclick="toggleSafeMode()">🚀 Modo seguro: OFF</button>
-      <button class="btn-secondary" id="btn-visual-profile-toggle" onclick="toggleVisualProfile()">🎨 Visual: Estable</button>
+      <div class="quality-segment" id="quality-segment" aria-label="Perfil visual">
+        <button type="button" class="quality-pill" id="quality-pill-premium" onclick="setVisualProfile('premium')" data-i18n="visualProfilePremium">✨ Premium</button>
+        <button type="button" class="quality-pill" id="quality-pill-balanced" onclick="setVisualProfile('balanced')" data-i18n="visualProfileBalanced">⚖️ Equilibrado</button>
+        <button type="button" class="quality-pill" id="quality-pill-economy" onclick="setVisualProfile('economy')" data-i18n="visualProfileEconomy">🍃 Ahorro</button>
+      </div>
       <div class="perf-auto-indicator" id="perf-auto-indicator">Rendimiento automático: ON</div>
     </div>
     <div class="scroll-sentinel" aria-hidden="true"></div>
@@ -4536,11 +4595,17 @@ let previousScreen = 'lessons';
 let currentLang = localStorage.getItem('explicalia-lang') || 'es';
 let mechanicalKeyFxEnabled = localStorage.getItem('sofiNoaKeyFx') !== '0';
 const _savedSafeMode = localStorage.getItem('sofiNoaSafeMode');
-if(_savedSafeMode===null)localStorage.setItem('sofiNoaSafeMode','1');
-let safeModeEnabled = _savedSafeMode===null ? true : _savedSafeMode !== '0';
+const _safeModeMigrated = localStorage.getItem('sofiNoaSafeModeMigratedV2');
+if(_safeModeMigrated!=='1'){
+  localStorage.setItem('sofiNoaSafeMode','0');
+  localStorage.setItem('sofiNoaSafeModeMigratedV2','1');
+}
+if(_savedSafeMode===null)localStorage.setItem('sofiNoaSafeMode','0');
+let safeModeEnabled = localStorage.getItem('sofiNoaSafeMode') === '1';
 let perfAutoEnabled = localStorage.getItem('sofiNoaPerfAuto') !== '0';
-let visualProfile = localStorage.getItem('sofiNoaVisualProfile') || 'stable';
-if(visualProfile!=='stable' && visualProfile!=='balanced')visualProfile='stable';
+let visualProfile = localStorage.getItem('sofiNoaVisualProfile') || 'balanced';
+if(visualProfile==='stable')visualProfile='balanced';
+if(visualProfile!=='premium' && visualProfile!=='balanced' && visualProfile!=='economy')visualProfile='balanced';
 let perfMonitorRaf = 0;
 let perfLastTs = 0;
 let perfSampleStart = 0;
@@ -4850,8 +4915,9 @@ const TRANSLATIONS = {
     perfAutoStatusOff: "Rendimiento automático: OFF",
     safeModeOn: "🚀 Modo seguro: ON",
     safeModeOff: "🚀 Modo seguro: OFF",
-    visualProfileStable: "🎨 Visual: Estable",
-    visualProfileBalanced: "🎨 Visual: Equilibrado",
+    visualProfilePremium: "✨ Premium",
+    visualProfileBalanced: "⚖️ Equilibrado",
+    visualProfileEconomy: "🍃 Ahorro",
     mechanicalFxOn: "🔊 Sonido mecánico: ON",
     mechanicalFxOff: "🔇 Sonido mecánico: OFF",
     rhythmPop: "Pop",
@@ -4909,8 +4975,9 @@ const TRANSLATIONS = {
     perfAutoStatusOff: "Auto performance: OFF",
     safeModeOn: "🚀 Safe mode: ON",
     safeModeOff: "🚀 Safe mode: OFF",
-    visualProfileStable: "🎨 Visual: Stable",
-    visualProfileBalanced: "🎨 Visual: Balanced",
+    visualProfilePremium: "✨ Premium",
+    visualProfileBalanced: "⚖️ Balanced",
+    visualProfileEconomy: "🍃 Economy",
     mechanicalFxOn: "🔊 Mechanical key sound: ON",
     mechanicalFxOff: "🔇 Mechanical key sound: OFF",
     rhythmPop: "Pop",
@@ -6219,7 +6286,27 @@ function applySafeMode(){
 }
 
 function applyVisualProfile(){
-  document.documentElement.classList.toggle('balanced-mode',visualProfile==='balanced');
+  var root=document.documentElement;
+  root.classList.toggle('premium-mode',visualProfile==='premium');
+  root.classList.toggle('balanced-mode',visualProfile==='balanced');
+  root.classList.toggle('economy-mode',visualProfile==='economy');
+
+  // El perfil visual también gobierna la carga de recursos.
+  if(visualProfile==='economy'){
+    safeModeEnabled=true;
+    perfAutoEnabled=false;
+  }else if(visualProfile==='premium'){
+    safeModeEnabled=false;
+    perfAutoEnabled=false;
+  }else{
+    safeModeEnabled=false;
+    perfAutoEnabled=true;
+  }
+  localStorage.setItem('sofiNoaSafeMode',safeModeEnabled?'1':'0');
+  localStorage.setItem('sofiNoaPerfAuto',perfAutoEnabled?'1':'0');
+  applySafeMode();
+  updateSafeModeButton();
+  updatePerfAutoIndicator();
 }
 
 function updateSplashMotionState(){
@@ -6318,22 +6405,40 @@ function updatePerfAutoIndicator(){
 }
 
 function updateVisualProfileButton(){
-  var btn=document.getElementById('btn-visual-profile-toggle');
-  if(!btn)return;
-  btn.textContent=visualProfile==='balanced' ? (t('visualProfileBalanced')||'🎨 Visual: Equilibrado') : (t('visualProfileStable')||'🎨 Visual: Estable');
-  btn.classList.toggle('active-toggle',visualProfile==='balanced');
+  var premium=document.getElementById('quality-pill-premium');
+  var balanced=document.getElementById('quality-pill-balanced');
+  var economy=document.getElementById('quality-pill-economy');
+  if(!premium || !balanced || !economy)return;
+  premium.classList.toggle('active',visualProfile==='premium');
+  balanced.classList.toggle('active',visualProfile==='balanced');
+  economy.classList.toggle('active',visualProfile==='economy');
 }
 
 function toggleSafeMode(){
   perfAutoEnabled=false;
   localStorage.setItem('sofiNoaPerfAuto','0');
   setSafeModeState(!safeModeEnabled,'manual');
+  if(safeModeEnabled){
+    visualProfile='economy';
+  }else if(visualProfile==='economy'){
+    visualProfile='balanced';
+  }
+  localStorage.setItem('sofiNoaVisualProfile',visualProfile);
+  applyVisualProfile();
+  updateVisualProfileButton();
   updatePerfAutoIndicator();
   playPopSound();
 }
 
 function toggleVisualProfile(){
-  visualProfile=visualProfile==='balanced'?'stable':'balanced';
+  if(visualProfile==='premium')setVisualProfile('balanced');
+  else if(visualProfile==='balanced')setVisualProfile('economy');
+  else setVisualProfile('premium');
+}
+
+function setVisualProfile(profile){
+  if(profile!=='premium' && profile!=='balanced' && profile!=='economy')return;
+  visualProfile=profile;
   localStorage.setItem('sofiNoaVisualProfile',visualProfile);
   applyVisualProfile();
   updateVisualProfileButton();
@@ -6800,6 +6905,31 @@ function confirmSwitchPlayerFromGame(){
   playPopSound();
 }
 
+function replayLogoAnimation(logo){
+  if(!logo)return;
+  logo.classList.remove('exp-animado');
+  void logo.offsetWidth;
+  logo.classList.add('exp-animado');
+}
+
+function replayBrandingForScreen(screen){
+  if(!screen)return;
+  replayLogoAnimation(screen.querySelector('.game-header .exp-branding-logo'));
+  replayLogoAnimation(screen.querySelector('.footer-logo-animado,.theory-footer-logo'));
+  var tagline=screen.querySelector('.game-header .brand-tagline');
+  if(tagline){
+    tagline.style.animation='none';
+    void tagline.offsetWidth;
+    tagline.style.animation='taglineReveal var(--brand-text-dur) var(--brand-reveal-ease) 0.2s forwards';
+  }
+  var web=screen.querySelector('.footer-web');
+  if(web){
+    web.style.animation='none';
+    void web.offsetWidth;
+    web.style.animation='footerWebReveal var(--brand-text-dur) var(--brand-reveal-ease) 0.2s both';
+  }
+}
+
 function navTo(tab){
   initAudio();
   stopPlayback();
@@ -6814,7 +6944,10 @@ function navTo(tab){
   const target=document.getElementById('screen-'+tab);
   if(target){
     target.style.display='flex';
-    setTimeout(()=>{target.classList.add('active');},10);
+    setTimeout(function(){
+      target.classList.add('active');
+      replayBrandingForScreen(target);
+    },24);
   }
   
   if(tab==='home'){
@@ -7880,31 +8013,15 @@ document.addEventListener('DOMContentLoaded',()=>{
   window.addEventListener('resize',function(){ setupScrollHintForScreen(); });
   setTimeout(setupScrollHintForScreen,400);
 
-  // Intersection Observer para logos en footers
-  const footerObserver=new IntersectionObserver((entries)=>{
-    entries.forEach(entry=>{
-      const footer=entry.target;
-      const logo=footer.querySelector('.footer-logo-animado,.theory-footer-logo');
-      if(entry.isIntersecting&&logo&&!footer.classList.contains('animated')){
-        logo.classList.remove('exp-animado');
-        void logo.offsetWidth;
-        logo.classList.add('exp-animado');
-        footer.classList.add('animated');
-      }
-    });
-  },{threshold:0.2});
-
-  document.querySelectorAll('.explicalia-footer,.theory-modal-footer').forEach(footer=>{
-    footerObserver.observe(footer);
-  });
-  
   // Inicializar idioma
   document.querySelectorAll('.lang-btn').forEach(btn=>{
     btn.classList.toggle('active',btn.getAttribute('data-lang')===currentLang);
   });
   ensureFooterPlayerControl();
   updateAllTexts();
-  playHeaderBrandSweepOnce();
+  requestAnimationFrame(function(){
+    replayBrandingForScreen(document.querySelector('.screen.active'));
+  });
   
   // Si hay nombre guardado, preparar UI
   if(playerName&&document.getElementById('name-input')){
