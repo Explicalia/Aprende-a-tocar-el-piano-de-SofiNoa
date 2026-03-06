@@ -55,6 +55,8 @@
   --brand-reveal-ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --brand-reveal-dur: 0.82s;
   --brand-text-dur: 0.8s;
+  --brand-spacing: 48px;
+  --brand-spacing-sm: 8px;
   
   /* Radios */
   --radius-sm: 8px;
@@ -451,7 +453,7 @@ body, html {
 .splash-web:hover { color: var(--exp-gold-light); text-shadow: 0 0 16px rgba(212,175,55,0.5); }
 
 .splash-cta-wrap {
-  margin-top: 40px;
+  margin-top: var(--brand-spacing);
   opacity: 0;
   animation: splashCta 0.9s var(--brand-reveal-ease) 1s forwards;
 }
@@ -540,6 +542,9 @@ html.safe-mode.balanced-mode .theory-modal-wrapper {
   box-shadow: 0 0 0 1px rgba(255,255,255,0.08) inset, 0 6px 24px rgba(0,0,0,0.3), 0 0 28px rgba(212,175,55,0.22);
 }
 #splash-screen:active .branding-cta { transform: scale(0.98); }
+.branding-cta:focus-visible,
+.btn-jugar:focus-visible,
+.btn-start:focus-visible { outline: 2px solid var(--exp-gold); outline-offset: 3px; }
 .branding-cta-icon { font-size: 1rem; opacity: 0.95; color: var(--exp-gold); }
 @keyframes splashCta {
   from { opacity: 0; transform: translateY(14px); }
@@ -676,7 +681,7 @@ html:not(.safe-mode) #splash-screen.micro-anim .branding-cta-pulse {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: var(--brand-spacing-sm);
   text-align: left;
   max-width: calc(100% - 96px);
 }
@@ -717,7 +722,7 @@ html:not(.safe-mode) #splash-screen.micro-anim .branding-cta-pulse {
 .game-header:hover .brand-tagline { color: rgba(212, 175, 55, 0.7); }
 
 @media (max-width: 640px){
-  .header-branding-container { gap: 8px; max-width: calc(100% - 88px); }
+  .header-branding-container { gap: var(--brand-spacing-sm); max-width: calc(100% - 88px); }
   .header-branding-container .brand-tagline { padding-left: 8px; }
   .game-header .brand-tagline { font-size: 0.68rem; letter-spacing: 0.7px; }
 }
@@ -977,7 +982,7 @@ html:not(.safe-mode) #splash-screen.micro-anim .branding-cta-pulse {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: var(--brand-spacing-sm);
   font-family: var(--font-display);
   font-size: 0.95rem;
   color: var(--exp-gold);
@@ -993,7 +998,7 @@ html:not(.safe-mode) #splash-screen.micro-anim .branding-cta-pulse {
   animation: footerReveal 0.6s cubic-bezier(0.32, 0.72, 0, 1) forwards;
 }
 .footer-web { order: 1; }
-.footer-logo-animado { order: 2; margin-top: 6px; }
+.footer-logo-animado { order: 2; margin-top: var(--brand-spacing-sm); }
 .explicalia-footer::before {
   content: '';
   position: absolute;
